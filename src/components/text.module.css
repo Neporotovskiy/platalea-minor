@@ -1,0 +1,21 @@
+.text {
+    all: unset;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.text.medium {
+    font: var(--font-medium);
+}
+
+.text.large {
+    font: var(--font-large);
+}
+
+.text.dark {
+    color: rgb(var(--color-dark));
+}
+
+.text.light {
+    color: rgb(var(--color-light));
+}

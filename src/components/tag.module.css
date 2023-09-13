@@ -1,0 +1,16 @@
+.tag {
+    display: inline-block;
+    padding: 0 5px;
+    font: var(--font-medium);
+    text-decoration: none;
+}
+
+.tag.dark {
+    background-color: rgb(var(--color-dark));
+    color: rgb(var(--color-light));
+}
+
+.tag.light {
+    background-color: rgb(var(--color-light));
+    color: rgb(var(--color-dark));
+}

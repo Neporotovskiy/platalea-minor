@@ -1,0 +1,7 @@
+:root {
+    --color-light: 210,210,210;
+    --color-dark: 22,22,22;
+    --color-semi-dark: 29,29,29;
+    --font-medium: normal 16px/24px "IBM Plex Mono", sans-serif;
+    --font-large: normal 26px/32px "IBM Plex Mono", sans-serif;
+}

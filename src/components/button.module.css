@@ -1,0 +1,27 @@
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    font: var(--font-medium);
+    text-decoration: none;
+    text-transform: inherit;
+    cursor: pointer;
+}
+
+.button.dark {
+    background-color: rgb(var(--color-dark));
+    color: rgb(var(--color-light));
+}
+
+.button.semi-dark {
+    background-color: rgb(var(--color-semi-dark));
+    color: rgb(var(--color-light));
+}
+
+.button.light {
+    background-color: rgb(var(--color-light));
+    color: rgb(var(--color-dark));
+}

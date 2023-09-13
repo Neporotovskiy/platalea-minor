@@ -1,0 +1,26 @@
+.widget {
+    display: flex;
+    flex-direction: column;
+}
+
+.widget.medium {
+    width: 335px;
+    height: 340px;
+}
+
+.widget.large {
+    width: 690px;
+    height: 340px;
+}
+
+.widget.dark {
+    background-color: rgb(var(--color-dark));
+}
+
+.widget.semi-dark {
+    background-color: rgb(var(--color-semi-dark));
+}
+
+.widget.light {
+    background-color: rgb(var(--color-light));
+}

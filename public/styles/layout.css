@@ -1,0 +1,60 @@
+html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: rgb(var(--color-dark));
+    font: var(--font-medium);
+    text-transform: uppercase;
+    user-select: none;
+}
+
+body::-webkit-scrollbar,
+body::-webkit-scrollbar-track {
+    background-color: rgb(var(--color-semi-dark));
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-light));
+}
+
+#header,
+#main,
+#footer {
+    padding: 20px;
+    display: flex;
+}
+
+#header {
+    align-items: center;
+    gap: 20px;
+}
+
+#header .logotype {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    color: rgb(var(--color-light));
+}
+
+#header .logotype svg {
+    margin: auto;
+}
+
+#main {
+    flex-grow: 1;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#footer {
+    justify-content: space-between;
+    color: rgb(var(--color-light));
+}
