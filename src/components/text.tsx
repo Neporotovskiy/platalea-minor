@@ -1,6 +1,6 @@
 import React from "react";
-import type { JSX, FunctionComponent, FC, ReactNode } from "react";
 import clsx from "clsx";
+import type { JSX, FunctionComponent, FC, ReactNode } from "react";
 
 import styles from "./text.module.css";
 

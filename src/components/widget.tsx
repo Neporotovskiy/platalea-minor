@@ -1,10 +1,10 @@
 import React from "react";
-import type { JSX, FunctionComponent, ReactNode, FC } from "react";
 import clsx from "clsx";
+import type { JSX, FunctionComponent, ReactNode, FC } from "react";
 
 import styles from "./widget.module.css";
 
-type Props = {
+export type Props = {
     as?: keyof JSX.IntrinsicElements | FunctionComponent<any>;
     size?: "medium" | "large";
     color?: "dark" | "semi-dark" | "light";

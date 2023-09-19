@@ -1,10 +1,10 @@
 import React from "react";
-import type { JSX, FunctionComponent, FC, ReactNode } from "react";
 import clsx from "clsx";
+import type { JSX, FunctionComponent, FC, ReactNode } from "react";
 
 import styles from "./tag.module.css";
 
-type Props = {
+export type Props = {
     as?: keyof JSX.IntrinsicElements | FunctionComponent<any>;
     className?: string;
     color: "dark" | "light";
