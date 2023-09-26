@@ -2,4 +2,6 @@
 
 interface Window {
     main: HTMLDivElement;
+    breadcrumbs: HTMLDivElement;
+    dropdown: HTMLDialogElement;
 }

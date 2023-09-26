@@ -34,4 +34,9 @@
     flex-grow: 1;
 }
 
+.title:empty,
+.description:empty {
+    display: none;
+}
+
 

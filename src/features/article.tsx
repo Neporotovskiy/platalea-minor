@@ -8,6 +8,8 @@ import { Text } from "components/text";
 import { Button } from "components/button";
 import { Image } from "components/image";
 
+import type { Tag as TagType } from "types/article";
+
 import styles from "./article.module.css";
 
 type Props = {
@@ -29,45 +31,45 @@ export const Article: FC<Props> = ({ cover, children, ...other }) => (
     </Widget>
 );
 
+export const Header: FC<{
+    children: ReactNode | ReactNode[];
+}> = ({ children }) => <header className={styles.header}>{children}</header>;
+
 export const Tags: FC<{
-    children: Array<{ id?: number; name: string }>;
-    [key: string]: unknown;
+    children: TagType[];
 }> = ({ children }) => (
-    <header className={styles.header}>
-        {children.map(({ id, name }) =>
-            id === undefined ? (
-                <Tag key={name} color="light">
-                    {name}
-                </Tag>
-            ) : (
-                <Tag
-                    key={name}
-                    color="light"
-                    as={NavLink}
-                    to={"/articles?tags=" + id}
-                >
-                    {name}
-                </Tag>
-            ),
-        )}
-    </header>
+    <>
+        {children.map(({ id, name }) => (
+            <Tag
+                key={name}
+                color="light"
+                as={NavLink}
+                to={"/articles?tags=" + id}
+            >
+                {name}
+            </Tag>
+        ))}
+    </>
 );
 
 export const Content: FC<{
-    title: string;
-    description?: string;
-    [key: string]: unknown;
-}> = ({ title, description }) => (
-    <section className={styles.content}>
-        <Text as="h3" size="large" color="light">
-            {title}
-        </Text>
-        {description && (
-            <Text as="p" size="medium" color="light">
-                {description}
-            </Text>
-        )}
-    </section>
+    children: ReactNode | ReactNode[];
+}> = ({ children }) => <section className={styles.content}>{children}</section>;
+
+export const Title: FC<{ children: ReactNode | ReactNode[] }> = ({
+    children,
+}) => (
+    <Text as="h3" size="large" color="light" className={styles.title}>
+        {children}
+    </Text>
+);
+
+export const Description: FC<{ children: ReactNode | ReactNode[] }> = ({
+    children,
+}) => (
+    <Text as="p" size="medium" color="light" className={styles.description}>
+        {children}
+    </Text>
 );
 
 export const Link: FC<{

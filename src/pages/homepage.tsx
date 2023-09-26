@@ -1,29 +1,51 @@
 import React from "react";
-import type { FC } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import { Navigation } from "features/navigation";
-import { Article, Tags, Content, Link } from "features/article";
+import {
+    Article,
+    Header,
+    Tags,
+    Content,
+    Title,
+    Description,
+    Link,
+} from "features/article";
 
-const Components: Record<string, FC<any>> = {
-    article: ({ header, content, link: { title, ...link }, ...article }) => (
-        <Article {...article}>
-            {Array.isArray(header.tags) ? <Tags>{header.tags}</Tags> : null}
-            <Content title={content.title} description={content.description} />
-            <Link {...link}>{title}</Link>
-        </Article>
-    ),
-    navigation: ({ links }) => <Navigation>{links}</Navigation>,
+import type { Article as ArticleType } from "types/article";
+
+type HomepageData = {
+    featured: ArticleType;
+    articles: ArticleType[];
 };
 
 export const Homepage = () => {
-    const structure: any = useLoaderData();
+    const { featured, articles } = useLoaderData() as HomepageData;
     return (
         <>
-            {structure.map(({ type, ...other }: any, index: number) => {
-                const Component = Components[type];
-                return <Component key={index + type} {...other} />;
-            })}
+            <Article size="large" color="semi-dark" cover={featured.cover}>
+                <Header>
+                    <Tags>{featured.tags}</Tags>
+                </Header>
+                <Content>
+                    <Title>{featured.title}</Title>
+                    <Description>{featured.description}</Description>
+                </Content>
+                <Link href={"/articles/" + featured.id}>Читать</Link>
+            </Article>
+            <Navigation />
+            {articles.map(({ id, title, description, cover, tags }) => (
+                <Article key={id} size="medium" color="semi-dark" cover={cover}>
+                    <Header>
+                        <Tags>{tags}</Tags>
+                    </Header>
+                    <Content>
+                        <Title>{title}</Title>
+                        <Description>{description}</Description>
+                    </Content>
+                    <Link href={"/articles/" + id}>Читать</Link>
+                </Article>
+            ))}
         </>
     );
 };

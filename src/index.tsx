@@ -9,95 +9,46 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Homepage />,
-        loader: () => [
-            {
-                type: "article",
-                size: "large",
-                color: "semi-dark",
+        loader: () => ({
+            featured: {
+                id: "0",
+                title: "Ground Branch",
+                description: "",
+                content: "",
                 cover: "/about-cover.jpg",
-                header: {
-                    tags: [{ name: "Об игре" }],
-                },
-                content: {
-                    title: "Ground Branch",
-                    description:
-                        "В GROUND BRANCH вы работаете на Центр специальных операций / Специальную оперативную группу ЦРУ (SAC/SOG) и решаете различные задачи в составе парамилитарного подразделения",
-                },
-                link: {
-                    href: "/articles/about-game",
-                    title: "Подробнее",
-                },
+                tags: [{ id: "0", name: "Об игре" }],
             },
-            {
-                type: "navigation",
-                links: [
-                    {
-                        url: "/articles/codex",
-                        name: "Кодекс",
-                        updated: false,
-                    },
-                    {
-                        url: "/articles?tags=0,1,2",
-                        name: "Инструкции",
-                        updated: true,
-                    },
-                    {
-                        url: "/articles",
-                        name: "Статьи",
-                        updated: true,
-                    },
-                    {
-                        url: "/articles?tags=3,4,5",
-                        name: "Видео",
-                        updated: false,
-                    },
-                    {
-                        url: "/articles?tags=6,7,8",
-                        name: "Скриншоты",
-                        updated: false,
-                    },
-                ],
-            },
-            {
-                type: "article",
-                size: "medium",
-                color: "semi-dark",
-                cover: "/article-cover.jpg",
-                header: {
+            articles: [
+                {
+                    id: "1",
+                    title: "Алгоритм разбежки на карте Run Down",
+                    description: "",
+                    content: "",
+                    cover: "/article-cover.jpg",
                     tags: [
-                        { id: 0, name: "Тактика" },
-                        { id: 1, name: "Коммуникация" },
-                        { id: 2, name: "Основы" },
+                        { id: "1", name: "Тактика" },
+                        { id: "2", name: "Коммуникация" },
+                        { id: "3", name: "Основы" },
                     ],
                 },
-                content: {
-                    title: "Алгоритм разбежки на карте Run Down",
+                {
+                    id: "2",
+                    title: "Discord-сервер",
+                    description: "",
+                    content: "",
+                    cover: "",
+                    tags: [{ id: "4", name: "Чат" }],
                 },
-                link: {
-                    href: "/articles/htr-rd",
-                    title: "Читать",
-                },
-            },
-            {
-                type: "article",
-                size: "medium",
-                color: "semi-dark",
-                cover: "/article-cover.jpg",
-                header: {},
-                content: {
-                    title: "Наш Discord сервер",
-                },
-                link: {
-                    href: "https://discord.gg/MUw6cB6xpX",
-                    target: "_blank",
-                    title: "Присоединиться",
-                },
-            },
-        ],
+            ],
+        }),
     },
     {
         path: "/articles",
         element: <Articles />,
+        loader: () => ({
+            tags: [],
+            articles: [],
+        }),
     },
     {
         path: "/articles/:slug",

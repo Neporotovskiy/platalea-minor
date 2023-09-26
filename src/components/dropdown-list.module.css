@@ -1,0 +1,66 @@
+.cointainer {
+    position: relative;
+}
+
+.button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(var(--color-dark));
+    padding: 0 0 0 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(var(--color-light));
+}
+
+.icon.active {
+    background-color: rgb(var(--color-light));
+    color: rgb(var(--color-dark));
+}
+
+.icon.active svg {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    max-height: 338px; /* 6 options */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid rgb(var(--color-light));
+    background-color: rgb(var(--color-dark));
+    position: absolute;
+    right: 0;
+    top: 100%;
+    padding: 10px;
+    margin: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.option {
+    width: 100%;
+    padding: 10px;
+    color: rgb(var(--color-light));
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.option.selected,
+.option:focus,
+.option:hover {
+    background-color: rgb(var(--color-light));
+    color: rgb(var(--color-dark));
+}
+

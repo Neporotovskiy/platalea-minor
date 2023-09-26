@@ -1,7 +1,6 @@
 import React from "react";
-import clsx from "clsx";
 import { NavLink } from "react-router-dom";
-import type { FC } from "react";
+import clsx from "clsx";
 
 import { Widget } from "components/widget";
 import { Tag } from "components/tag";
@@ -15,13 +14,37 @@ type Link = {
     updated: boolean;
 };
 
-type Props = {
-    children: Link[];
-};
+const LINKS: Link[] = [
+    {
+        url: "/articles/codex",
+        name: "Кодекс",
+        updated: false,
+    },
+    {
+        url: "/articles?tags=0,1,2",
+        name: "Инструкции",
+        updated: false,
+    },
+    {
+        url: "/articles",
+        name: "Статьи",
+        updated: false,
+    },
+    {
+        url: "/articles?tags=3,4,5",
+        name: "Видео",
+        updated: false,
+    },
+    {
+        url: "/articles?tags=6,7,8",
+        name: "Скриншоты",
+        updated: false,
+    },
+];
 
-export const Navigation: FC<Props> = ({ children }) => (
+export const Navigation = () => (
     <Widget as="nav" size="large" className={styles.container}>
-        {children.map(({ url, name, updated }) => (
+        {LINKS.map(({ url, name, updated }) => (
             <Button
                 as={NavLink}
                 to={url}

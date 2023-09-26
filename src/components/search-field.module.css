@@ -1,0 +1,38 @@
+.field {
+    background-color: rgb(var(--color-dark));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.field:focus-within {
+    box-shadow: var(--outline-shadow);
+}
+
+.input {
+    height: 100%;
+    border: none;
+    background: none;
+    padding: 0 0 0 10px;
+    color: rgb(var(--color-light));
+    font: var(--font-medium);
+    text-transform: inherit;
+    flex-grow: 1;
+}
+
+.input:focus {
+    box-shadow: none;
+}
+
+.input::placeholder {
+    color: inherit;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(var(--color-light));
+}
