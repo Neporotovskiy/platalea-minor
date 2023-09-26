@@ -46,7 +46,14 @@ const router = createBrowserRouter([
         path: "/articles",
         element: <Articles />,
         loader: () => ({
-            tags: [],
+            tags: [
+                { id: "0", name: "Об игре" },
+                { id: "1", name: "Тактика" },
+                { id: "2", name: "Коммуникация" },
+                { id: "3", name: "Основы" },
+                { id: "4", name: "Чат" },
+                { id: "5", name: "Развитие сообщества" },
+            ],
             articles: [],
         }),
     },

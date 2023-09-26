@@ -46,14 +46,10 @@ export const Articles = () => {
                         selected={{ value: "", label: "Поиск по метке" }}
                         onChange={console.log}
                     >
-                        {[
-                            { value: "0", label: "Об игре" },
-                            { value: "1", label: "Тактика" },
-                            { value: "2", label: "Коммуникация" },
-                            { value: "3", label: "Основы" },
-                            { value: "4", label: "Чат" },
-                            { value: "5", label: "Развитие сообщества" },
-                        ]}
+                        {tags.map(({ id, name }) => ({
+                            value: id,
+                            label: name,
+                        }))}
                     </DropdownList>
                     <DropdownList
                         selected={{ value: "", label: "Сортировка" }}
