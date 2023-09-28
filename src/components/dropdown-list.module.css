@@ -1,33 +1,38 @@
-.cointainer {
+.container {
     position: relative;
 }
 
-.button {
-    width: 100%;
+.trigger {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(var(--color-dark));
     padding: 0 0 0 10px;
-    border: none;
-    cursor: pointer;
 }
 
-.icon {
+.buttons {
+    display: flex;
+}
+
+.button {
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: none;
+    border: none;
     color: rgb(var(--color-light));
+    cursor: pointer;
 }
 
-.icon.active {
+.button:hover,
+.button.opened {
     background-color: rgb(var(--color-light));
     color: rgb(var(--color-dark));
 }
 
-.icon.active svg {
+.button.opened svg {
     transform: rotate(180deg);
 }
 

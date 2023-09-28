@@ -8,7 +8,7 @@ import { Breadcrumbs } from "features/breadcrumbs";
 import { Button } from "components/button";
 import { Tag } from "components/tag";
 import { SearchField } from "components/search-field";
-import { DropdownList } from "components/dropdown-list";
+import { DropdownList, type Option } from "components/dropdown-list";
 
 import type { Article as ArticleType, Tag as TagType } from "types/article";
 
@@ -17,8 +17,42 @@ type ArticlesData = {
     articles: ArticleType[];
 };
 
+const DEFAULT_TAG = {
+    value: "",
+    label: "Поиск по метке",
+};
+
+const DEFAULT_ORDER = {
+    value: "",
+    label: "Сортировка",
+};
+
 export const Articles = () => {
-    const { tags, articles } = useLoaderData() as ArticlesData;
+    const data = useLoaderData() as ArticlesData;
+    const [search, setSearch] = React.useState<string>("");
+    const [tag, setTag] = React.useState<Option>(DEFAULT_TAG);
+    const [order, setOrder] = React.useState<Option>(DEFAULT_ORDER);
+
+    const clearSearch = () => {
+        setSearch("");
+    };
+
+    const clearTag = () => {
+        setTag(DEFAULT_TAG);
+    };
+
+    const clearOrder = () => {
+        setOrder(DEFAULT_ORDER);
+    };
+
+    const prepareURLString = () => {
+        const query = new URLSearchParams();
+        if (search !== "") query.set("search", search);
+        if (tag.value !== "") query.set("tags", tag.value);
+        if (order.value !== "") query.set("order", order.value);
+        console.log(query.toString());
+    };
+
     return (
         <>
             <Breadcrumbs>
@@ -40,20 +74,24 @@ export const Articles = () => {
                     <SearchField
                         type="text"
                         placeholder="Поиск по названию"
-                        onChange={console.log}
+                        value={search}
+                        onChange={setSearch}
+                        onClear={clearSearch}
                     />
                     <DropdownList
-                        selected={{ value: "", label: "Поиск по метке" }}
-                        onChange={console.log}
+                        selected={tag}
+                        onChange={setTag}
+                        onClear={clearTag}
                     >
-                        {tags.map(({ id, name }) => ({
+                        {data.tags.map(({ id, name }) => ({
                             value: id,
                             label: name,
                         }))}
                     </DropdownList>
                     <DropdownList
-                        selected={{ value: "", label: "Сортировка" }}
-                        onChange={console.log}
+                        selected={order}
+                        onChange={setOrder}
+                        onClear={clearOrder}
                     >
                         {[
                             { value: "asc", label: "Самые свежие" },
@@ -61,7 +99,9 @@ export const Articles = () => {
                         ]}
                     </DropdownList>
                 </Content>
-                <Button color="light">Применить</Button>
+                <Button color="light" onClick={prepareURLString}>
+                    Применить
+                </Button>
             </Article>
             <Article size="medium" color="semi-dark">
                 <Header>

@@ -5,10 +5,6 @@
     align-items: center;
 }
 
-.field:focus-within {
-    box-shadow: var(--outline-shadow);
-}
-
 .input {
     height: 100%;
     border: none;
@@ -20,14 +16,11 @@
     flex-grow: 1;
 }
 
-.input:focus {
-    box-shadow: none;
-}
-
 .input::placeholder {
     color: inherit;
 }
 
+.button,
 .icon {
     width: 50px;
     height: 50px;
@@ -35,4 +28,15 @@
     justify-content: center;
     align-items: center;
     color: rgb(var(--color-light));
+}
+
+.button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgb(var(--color-light));
+    color: rgb(var(--color-dark));
 }
