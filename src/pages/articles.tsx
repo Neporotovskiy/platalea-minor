@@ -7,8 +7,8 @@ import { Breadcrumbs } from "features/breadcrumbs";
 
 import { Button } from "components/button";
 import { Tag } from "components/tag";
-import { SearchField } from "components/search-field";
-import { DropdownList, type Option } from "components/dropdown-list";
+import { Search } from "components/search";
+import { Select } from "components/select";
 
 import type { Article as ArticleType, Tag as TagType } from "types/article";
 
@@ -17,39 +17,17 @@ type ArticlesData = {
     articles: ArticleType[];
 };
 
-const DEFAULT_TAG = {
-    value: "",
-    label: "Поиск по метке",
-};
-
-const DEFAULT_ORDER = {
-    value: "",
-    label: "Сортировка",
-};
-
 export const Articles = () => {
     const data = useLoaderData() as ArticlesData;
     const [search, setSearch] = React.useState<string>("");
-    const [tag, setTag] = React.useState<Option>(DEFAULT_TAG);
-    const [order, setOrder] = React.useState<Option>(DEFAULT_ORDER);
-
-    const clearSearch = () => {
-        setSearch("");
-    };
-
-    const clearTag = () => {
-        setTag(DEFAULT_TAG);
-    };
-
-    const clearOrder = () => {
-        setOrder(DEFAULT_ORDER);
-    };
+    const [tag, setTag] = React.useState<string>("");
+    const [order, setOrder] = React.useState<string>("");
 
     const prepareURLString = () => {
         const query = new URLSearchParams();
         if (search !== "") query.set("search", search);
-        if (tag.value !== "") query.set("tags", tag.value);
-        if (order.value !== "") query.set("order", order.value);
+        if (tag !== "") query.set("tags", tag);
+        if (order !== "") query.set("order", order);
         console.log(query.toString());
     };
 
@@ -71,33 +49,32 @@ export const Articles = () => {
                     <Tag color="light">Параметры поиска</Tag>
                 </Header>
                 <Content>
-                    <SearchField
+                    <Search
                         type="text"
-                        placeholder="Поиск по названию"
                         value={search}
                         onChange={setSearch}
-                        onClear={clearSearch}
+                        placeholder="Поиск по названию"
                     />
-                    <DropdownList
-                        selected={tag}
+                    <Select
+                        value={tag}
                         onChange={setTag}
-                        onClear={clearTag}
+                        placeholder="Поиск по метке"
                     >
                         {data.tags.map(({ id, name }) => ({
                             value: id,
                             label: name,
                         }))}
-                    </DropdownList>
-                    <DropdownList
-                        selected={order}
+                    </Select>
+                    <Select
+                        value={order}
                         onChange={setOrder}
-                        onClear={clearOrder}
+                        placeholder="Сортировка"
                     >
                         {[
                             { value: "asc", label: "Самые свежие" },
                             { value: "desc", label: "Самые старые" },
                         ]}
-                    </DropdownList>
+                    </Select>
                 </Content>
                 <Button color="light" onClick={prepareURLString}>
                     Применить
