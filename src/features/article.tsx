@@ -40,12 +40,7 @@ export const Tags: FC<{
 }> = ({ children }) => (
     <>
         {children.map(({ id, name }) => (
-            <Tag
-                key={name}
-                color="light"
-                as={NavLink}
-                to={"/articles?tag=" + id}
-            >
+            <Tag key={name} color="light" as={NavLink} to={"/articles?t=" + id}>
                 {name}
             </Tag>
         ))}

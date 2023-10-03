@@ -48,9 +48,16 @@ const router = createBrowserRouter([
         loader: ({ request }) => {
             const url = new URL(request.url);
             const params = url.searchParams;
-            const search = params.get("search") ?? "";
-            const tag = params.get("tag") ?? "";
-            const order = params.get("order") ?? "";
+            const query = params.get("q") ?? "";
+            const tag = params.get("t") ?? "";
+            const order = params.get("o") ?? "";
+
+            console.log("--------- Filters ----------");
+            console.log("Search:", query || "<empty>");
+            console.log("Tag:", tag || "<empty>");
+            console.log("Order:", order || "<empty>");
+            console.log("----------------------------");
+
             return {
                 tags: [
                     { id: "0", name: "Об игре" },
@@ -94,11 +101,6 @@ const router = createBrowserRouter([
                         tags: [{ id: "3", name: "Основы" }],
                     },
                 ],
-                params: {
-                    search,
-                    tag,
-                    order,
-                },
             };
         },
     },

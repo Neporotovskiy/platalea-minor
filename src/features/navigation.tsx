@@ -21,7 +21,7 @@ const LINKS: Link[] = [
         updated: false,
     },
     {
-        url: "/articles?tag=0",
+        url: "/articles?t=0",
         name: "Инструкции",
         updated: false,
     },
