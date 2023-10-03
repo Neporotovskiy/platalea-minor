@@ -14,6 +14,8 @@ import { Navigation } from "features/navigation";
 import { Breadcrumbs } from "features/breadcrumbs";
 import { Filters } from "features/filters";
 
+import { DocumentTitle } from "components/document-title";
+
 import type { Article as ArticleType, Tag as TagType } from "types/article";
 
 type ArticlesData = {
@@ -25,6 +27,7 @@ export const Articles = () => {
     const { tags, articles } = useLoaderData() as ArticlesData;
     return (
         <>
+            <DocumentTitle>GSF - Статьи</DocumentTitle>
             <Breadcrumbs>
                 {[
                     {

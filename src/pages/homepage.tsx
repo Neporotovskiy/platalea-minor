@@ -12,6 +12,8 @@ import {
     Link,
 } from "features/article";
 
+import { DocumentTitle } from "components/document-title";
+
 import type { Article as ArticleType } from "types/article";
 
 type HomepageData = {
@@ -21,8 +23,10 @@ type HomepageData = {
 
 export const Homepage = () => {
     const { featured, articles } = useLoaderData() as HomepageData;
+
     return (
         <>
+            <DocumentTitle>GSF - Главная</DocumentTitle>
             <Article size="large" color="semi-dark" cover={featured.cover}>
                 <Header>
                     <Tags>{featured.tags}</Tags>
