@@ -44,7 +44,7 @@ export const Tags: FC<{
                 key={name}
                 color="light"
                 as={NavLink}
-                to={"/articles?tags=" + id}
+                to={"/articles?tag=" + id}
             >
                 {name}
             </Tag>

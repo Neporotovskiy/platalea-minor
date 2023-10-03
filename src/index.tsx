@@ -45,17 +45,62 @@ const router = createBrowserRouter([
     {
         path: "/articles",
         element: <Articles />,
-        loader: () => ({
-            tags: [
-                { id: "0", name: "Об игре" },
-                { id: "1", name: "Тактика" },
-                { id: "2", name: "Коммуникация" },
-                { id: "3", name: "Основы" },
-                { id: "4", name: "Чат" },
-                { id: "5", name: "Развитие сообщества" },
-            ],
-            articles: [],
-        }),
+        loader: ({ request }) => {
+            const url = new URL(request.url);
+            const params = url.searchParams;
+            const search = params.get("search") ?? "";
+            const tag = params.get("tag") ?? "";
+            const order = params.get("order") ?? "";
+            return {
+                tags: [
+                    { id: "0", name: "Об игре" },
+                    { id: "1", name: "Тактика" },
+                    { id: "2", name: "Коммуникация" },
+                    { id: "3", name: "Основы" },
+                    { id: "4", name: "Чат" },
+                    { id: "5", name: "Развитие сообщества" },
+                ],
+                articles: [
+                    {
+                        id: "3",
+                        title: "Основы коммуникации и взаимодействия в составе тактической единицы",
+                        description: "",
+                        content: "",
+                        cover: "/article-cover.jpg",
+                        tags: [{ id: "3", name: "Основы" }],
+                    },
+                    {
+                        id: "4",
+                        title: "Особенности поведения противника в темное время суток",
+                        description: "",
+                        content: "",
+                        cover: "/article-cover.jpg",
+                        tags: [{ id: "3", name: "Основы" }],
+                    },
+                    {
+                        id: "5",
+                        title: "Алгоритм разбежки из гаража на карте Run Down",
+                        description: "",
+                        content: "",
+                        cover: "/article-cover.jpg",
+                        tags: [{ id: "3", name: "Основы" }],
+                    },
+                    {
+                        id: "6",
+                        title: "Развед.сводка №017",
+                        description: "Август 2023",
+                        content: "",
+                        cover: "/article-cover.jpg",
+                        tags: [{ id: "3", name: "Основы" }],
+                    },
+                ],
+                params: {
+                    search,
+                    tag,
+                    order,
+                },
+            };
+        },
     },
     {
         path: "/articles/:slug",

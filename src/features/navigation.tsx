@@ -21,7 +21,7 @@ const LINKS: Link[] = [
         updated: false,
     },
     {
-        url: "/articles?tags=0,1,2",
+        url: "/articles?tag=0",
         name: "Инструкции",
         updated: false,
     },
@@ -31,12 +31,12 @@ const LINKS: Link[] = [
         updated: false,
     },
     {
-        url: "/articles?tags=3,4,5",
+        url: "/articles/video",
         name: "Видео",
         updated: false,
     },
     {
-        url: "/articles?tags=6,7,8",
+        url: "/articles/screenshots",
         name: "Скриншоты",
         updated: false,
     },
@@ -51,9 +51,7 @@ export const Navigation = () => (
                 key={name}
                 color="semi-dark"
                 className={clsx(styles.button, {
-                    [styles.selected]:
-                        url ===
-                        window.location.pathname + window.location.search,
+                    [styles.selected]: url === window.location.pathname,
                 })}
             >
                 {updated && (

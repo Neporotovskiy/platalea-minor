@@ -1,7 +1,15 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-import { Article, Header, Content, Title, Link, Tags } from "features/article";
+import {
+    Article,
+    Header,
+    Content,
+    Tags,
+    Title,
+    Description,
+    Link,
+} from "features/article";
 import { Navigation } from "features/navigation";
 import { Breadcrumbs } from "features/breadcrumbs";
 
@@ -15,20 +23,27 @@ import type { Article as ArticleType, Tag as TagType } from "types/article";
 type ArticlesData = {
     tags: TagType[];
     articles: ArticleType[];
+    params: {
+        search: string;
+        tag: string;
+        order: string;
+    };
 };
 
 export const Articles = () => {
     const data = useLoaderData() as ArticlesData;
-    const [search, setSearch] = React.useState<string>("");
-    const [tag, setTag] = React.useState<string>("");
-    const [order, setOrder] = React.useState<string>("");
+    const [search, setSearch] = React.useState<string>(data.params.search);
+    const [tag, setTag] = React.useState<string>(data.params.tag);
+    const [order, setOrder] = React.useState<string>(data.params.order);
+    const navigate = useNavigate();
 
-    const prepareURLString = () => {
+    const applyFilters = () => {
         const query = new URLSearchParams();
         if (search !== "") query.set("search", search);
-        if (tag !== "") query.set("tags", tag);
+        if (tag !== "") query.set("tag", tag);
         if (order !== "") query.set("order", order);
-        console.log(query.toString());
+        const url = query.toString();
+        navigate("?" + url);
     };
 
     return (
@@ -76,7 +91,7 @@ export const Articles = () => {
                         ]}
                     </Select>
                 </Content>
-                <Button color="light" onClick={prepareURLString}>
+                <Button color="light" onClick={applyFilters}>
                     Применить
                 </Button>
             </Article>
@@ -92,6 +107,18 @@ export const Articles = () => {
                 <Link href="/articles/10">Читать</Link>
             </Article>
             <Navigation />
+            {data.articles.map(({ id, cover, tags, title, description }) => (
+                <Article key={id} size="medium" cover={cover} color="semi-dark">
+                    <Header>
+                        <Tags>{tags}</Tags>
+                    </Header>
+                    <Content>
+                        <Title>{title}</Title>
+                        <Description>{description}</Description>
+                    </Content>
+                    <Link href={"/articles/" + id}>Читать</Link>
+                </Article>
+            ))}
         </>
     );
 };

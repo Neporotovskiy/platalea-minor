@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.field.fulfilled {
+    box-shadow: var(--outline-shadow);
+}
+
 .input {
     height: 100%;
     border: none;

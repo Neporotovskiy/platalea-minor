@@ -47,12 +47,15 @@ export const Select: FC<Props> = ({
 
     const ref = useClickAway<HTMLDivElement>(close);
 
+    const fulfilled = value !== "";
+
     return (
         <div className={styles.container} ref={ref}>
             <button
                 onClick={toggle}
                 className={clsx(styles.trigger, {
                     [styles.opened]: opened,
+                    [styles.fulfilled]: fulfilled,
                 })}
             >
                 <Text size="medium" color="light">
