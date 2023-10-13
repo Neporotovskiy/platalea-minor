@@ -20,14 +20,14 @@ export const Text: FC<Props> = ({
     className,
     children,
     ...other
-}: any) => {
+}) => {
     return React.createElement(
         as,
         {
             className: clsx(
                 styles.text,
-                styles[size],
-                styles[color],
+                styles[size as string],
+                styles[color as string],
                 className,
             ),
             ...other,

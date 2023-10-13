@@ -13,4 +13,11 @@ export type Article = {
     tags: Tag[];
 };
 
-export type Content = Record<string, unknown>[];
+export type Blocks = "paragraph" | "header" | "picture" | "text" | "link";
+
+export type Content = {
+    id: Identifier;
+    type: Blocks;
+    attributes: Record<string, string>;
+    children: Array<Content | string>;
+};

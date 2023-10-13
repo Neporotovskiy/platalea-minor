@@ -25,6 +25,7 @@ type ArticlesData = {
 
 export const Articles = () => {
     const { tags, articles } = useLoaderData() as ArticlesData;
+
     return (
         <>
             <DocumentTitle>GSF - Статьи</DocumentTitle>

@@ -19,3 +19,7 @@
 .text.light {
     color: rgb(var(--color-light));
 }
+
+.text:empty {
+    display: none;
+}

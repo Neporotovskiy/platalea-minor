@@ -1,46 +1,22 @@
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, json } from "react-router-dom";
 
 import { Homepage } from "pages/homepage";
 import { Articles } from "pages/articles";
 import { Article } from "pages/article";
+import { Error } from "pages/error";
+
+import { ARTICLES, TAGS } from "./fixtures";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Homepage />,
         loader: () => ({
-            featured: {
-                id: "0",
-                title: "Ground Branch",
-                description: "",
-                content: "",
-                cover: "/about-cover.jpg",
-                tags: [{ id: "0", name: "Об игре" }],
-            },
-            articles: [
-                {
-                    id: "1",
-                    title: "Алгоритм разбежки на карте Run Down",
-                    description: "",
-                    content: "",
-                    cover: "/article-cover.jpg",
-                    tags: [
-                        { id: "1", name: "Тактика" },
-                        { id: "2", name: "Коммуникация" },
-                        { id: "3", name: "Основы" },
-                    ],
-                },
-                {
-                    id: "2",
-                    title: "Discord-сервер",
-                    description: "",
-                    content: "",
-                    cover: "",
-                    tags: [{ id: "4", name: "Чат" }],
-                },
-            ],
+            featured: ARTICLES[0],
+            articles: ARTICLES.slice(1, 3),
         }),
+        errorElement: <Error />,
     },
     {
         path: "/articles",
@@ -59,54 +35,86 @@ const router = createBrowserRouter([
             console.log("----------------------------");
 
             return {
-                tags: [
-                    { id: "0", name: "Об игре" },
-                    { id: "1", name: "Тактика" },
-                    { id: "2", name: "Коммуникация" },
-                    { id: "3", name: "Основы" },
-                    { id: "4", name: "Чат" },
-                    { id: "5", name: "Развитие сообщества" },
-                ],
-                articles: [
+                tags: TAGS,
+                articles: ARTICLES.slice(3),
+            };
+        },
+        errorElement: <Error />,
+    },
+    {
+        path: "/articles/:id",
+        element: <Article />,
+        loader: ({ params }) => {
+            const article = ARTICLES.find(({ id }) => id === params.id);
+            if (article === undefined) throw json(null, { status: 404 });
+            return {
+                ...article,
+                content: [
                     {
-                        id: "3",
-                        title: "Основы коммуникации и взаимодействия в составе тактической единицы",
-                        description: "",
-                        content: "",
-                        cover: "/article-cover.jpg",
-                        tags: [{ id: "3", name: "Основы" }],
+                        id: "node-1",
+                        type: "paragraph",
+                        attributes: {},
+                        children: [
+                            {
+                                id: "node-2",
+                                type: "text",
+                                attributes: {},
+                                children: [
+                                    "Война - это путь обмана. Поэтому, если ты и можешь что-нибудь, показывай противнику, будто не можешь; если ты и пользуешься чем-нибудь, показывай ему, будто ты этим не пользуешься; хотя бы ты и был близко, показывай, будто ты далеко; хотя бы ты и был далеко, показывай, будто ты близко; заманивай его выгодой; приведи его в расстройство и бери его; если у него все полно, будь наготове; если он силен, уклоняйся от него; вызвав в нем гнев, приведи его в состояние расстройства; приняв смиренный вид, вызови в нем самомнение; если его силы свежи, утоми его; если у него дружны воины, разъедини; нападай на него, когда он не готов; выступай, когда он не ожидает.",
+                                ],
+                            },
+                        ],
                     },
                     {
-                        id: "4",
-                        title: "Особенности поведения противника в темное время суток",
-                        description: "",
-                        content: "",
-                        cover: "/article-cover.jpg",
-                        tags: [{ id: "3", name: "Основы" }],
+                        id: "node-3",
+                        type: "header",
+                        attributes: {},
+                        children: [
+                            "Основы коммуникации и взаимодействия в составе тактической единицы",
+                        ],
                     },
                     {
-                        id: "5",
-                        title: "Алгоритм разбежки из гаража на карте Run Down",
-                        description: "",
-                        content: "",
-                        cover: "/article-cover.jpg",
-                        tags: [{ id: "3", name: "Основы" }],
+                        id: "node-4",
+                        type: "paragraph",
+                        attributes: {},
+                        children: [
+                            {
+                                id: "node-5",
+                                type: "text",
+                                attributes: {},
+                                children: [
+                                    "Война - это путь обмана. Поэтому, если ты и можешь что-нибудь, показывай противнику, будто не можешь; если ты и пользуешься чем-нибудь, показывай ему, будто ты этим не пользуешься; хотя бы ты и был близко, показывай, будто ты далеко; хотя бы ты и был далеко, показывай, будто ты близко; заманивай его выгодой; приведи его в расстройство и бери его; если у него все полно, будь наготове; если он силен, уклоняйся от него; вызвав в нем гнев, приведи его в состояние расстройства; приняв смиренный вид, вызови в нем самомнение; если его силы свежи, утоми его; если у него дружны воины, разъедини; нападай на него, когда он не готов; выступай, когда он не ожидает.",
+                                ],
+                            },
+                        ],
                     },
                     {
-                        id: "6",
-                        title: "Развед.сводка №017",
-                        description: "Август 2023",
-                        content: "",
-                        cover: "/article-cover.jpg",
-                        tags: [{ id: "3", name: "Основы" }],
+                        id: "node-6",
+                        type: "picture",
+                        attributes: {
+                            src: "/article-cover.jpg",
+                        },
+                        children: [],
+                    },
+                    {
+                        id: "node-7",
+                        type: "paragraph",
+                        attributes: {},
+                        children: [
+                            {
+                                id: "node-8",
+                                type: "text",
+                                attributes: {},
+                                children: [
+                                    "Война - это путь обмана. Поэтому, если ты и можешь что-нибудь, показывай противнику, будто не можешь; если ты и пользуешься чем-нибудь, показывай ему, будто ты этим не пользуешься; хотя бы ты и был близко, показывай, будто ты далеко; хотя бы ты и был далеко, показывай, будто ты близко; заманивай его выгодой; приведи его в расстройство и бери его; если у него все полно, будь наготове; если он силен, уклоняйся от него; вызвав в нем гнев, приведи его в состояние расстройства; приняв смиренный вид, вызови в нем самомнение; если его силы свежи, утоми его; если у него дружны воины, разъедини; нападай на него, когда он не готов; выступай, когда он не ожидает.",
+                                ],
+                            },
+                        ],
                     },
                 ],
             };
         },
-    },
-    {
-        path: "/articles/:slug",
-        element: <Article />,
+        errorElement: <Error />,
     },
 ]);
 
