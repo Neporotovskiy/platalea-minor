@@ -37,7 +37,7 @@ export const Article = () => {
                     },
                 ]}
             </Breadcrumbs>
-            <article>
+            <article className={styles.article}>
                 <section className={styles.header}>
                     <Image
                         src={article.cover}
@@ -45,17 +45,17 @@ export const Article = () => {
                         className={styles.cover}
                     />
                     <div className={styles.overlay}>
-                        <div className={styles.info}>
+                        <section className={styles.info}>
                             <div>
                                 <Tags>{article.tags}</Tags>
                             </div>
-                            <Text as="h1" color="light" size="large">
+                            <Text as="h1" color="light" size="large" uppercase>
                                 {article.title}
                             </Text>
                             <Text as="h2" color="light">
                                 {article.description}
                             </Text>
-                        </div>
+                        </section>
                     </div>
                 </section>
                 <section className={styles.content}>

@@ -3,6 +3,7 @@
     padding: 0 5px;
     font: var(--font-medium);
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .tag.dark {

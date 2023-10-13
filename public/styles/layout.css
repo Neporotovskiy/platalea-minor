@@ -11,7 +11,6 @@ body {
     margin: 0 auto;
     background-color: rgb(var(--color-dark));
     font: var(--font-medium);
-    text-transform: uppercase;
     user-select: none;
 }
 

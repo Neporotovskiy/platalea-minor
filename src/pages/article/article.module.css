@@ -1,3 +1,11 @@
+.article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
 .header {
     position: relative;
 }
@@ -16,6 +24,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    align-items: center;
     padding: 20px;
     box-sizing: border-box;
     background-color: rgba(var(--color-semi-dark), .5);
@@ -26,5 +35,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 0 auto;
+}
+
+.content {
+    width: 690px;
+    display: flex;
+    flex-direction: column;
 }

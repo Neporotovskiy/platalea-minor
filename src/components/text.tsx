@@ -8,6 +8,7 @@ type Props = {
     as?: keyof JSX.IntrinsicElements | FunctionComponent<any>;
     size?: "medium" | "large";
     color?: "dark" | "light";
+    uppercase?: boolean;
     className?: string;
     children: ReactNode | ReactNode[];
     [key: string]: unknown;
@@ -17,6 +18,7 @@ export const Text: FC<Props> = ({
     as = "span",
     size,
     color,
+    uppercase,
     className,
     children,
     ...other
@@ -28,6 +30,7 @@ export const Text: FC<Props> = ({
                 styles.text,
                 styles[size as string],
                 styles[color as string],
+                uppercase && styles.uppercase,
                 className,
             ),
             ...other,

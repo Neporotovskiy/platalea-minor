@@ -18,6 +18,6 @@ export type Blocks = "paragraph" | "header" | "picture" | "text" | "link";
 export type Content = {
     id: Identifier;
     type: Blocks;
-    attributes: Record<string, string>;
+    properties: Record<string, string>;
     children: Array<Content | string>;
 };

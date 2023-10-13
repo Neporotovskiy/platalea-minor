@@ -20,12 +20,12 @@ export const BLOCKS: Record<Blocks, FC<any>> = {
 export const renderer = ({
     id,
     type,
-    attributes,
+    properties,
     children,
 }: Content): ReactNode => {
     return React.createElement(
         BLOCKS[type],
-        { ...attributes, key: id },
+        { ...properties, key: id },
         children.map((child) =>
             typeof child === "string" ? child : renderer(child),
         ),

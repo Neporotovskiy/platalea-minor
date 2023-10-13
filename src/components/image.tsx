@@ -5,8 +5,8 @@ import styles from "./image.module.css";
 import clsx from "clsx";
 
 type Props = {
-    src: string;
-    alt: string;
+    src?: string;
+    alt?: string;
     className?: string;
     [key: string]: unknown;
 };

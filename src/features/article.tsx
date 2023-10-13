@@ -54,7 +54,7 @@ export const Content: FC<{
 export const Title: FC<{ children: ReactNode | ReactNode[] }> = ({
     children,
 }) => (
-    <Text as="h3" size="large" color="light" className={styles.title}>
+    <Text as="h3" size="large" color="light" uppercase className={styles.title}>
         {children}
     </Text>
 );

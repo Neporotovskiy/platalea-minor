@@ -7,7 +7,7 @@
     box-sizing: border-box;
     font: var(--font-medium);
     text-decoration: none;
-    text-transform: inherit;
+    text-transform: uppercase;
     cursor: pointer;
 }
 
