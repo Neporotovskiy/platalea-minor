@@ -1,4 +1,4 @@
-import React, { FC, OptionHTMLAttributes } from "react";
+import React, { FC } from "react";
 import clsx from "clsx";
 
 import { Text } from "components/text";
@@ -84,6 +84,7 @@ export const Select: FC<Props> = ({
                         <Text
                             as="button"
                             size="medium"
+                            color="dark"
                             className={styles.option}
                         >
                             -- Очистить --
@@ -94,6 +95,7 @@ export const Select: FC<Props> = ({
                             <Text
                                 as="button"
                                 size="medium"
+                                color="dark"
                                 className={clsx(styles.option, {
                                     [styles.selected]:
                                         value === selected?.value,

@@ -1,0 +1,12 @@
+.advice {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgb(var(--color-semi-dark));
+    position: sticky;
+    left: 0;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 20px;
+}

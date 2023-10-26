@@ -1,0 +1,17 @@
+.sidebar, .content {
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.sidebar {
+    width: 350px;
+    flex-shrink: 0;
+}
+
+.content {
+    flex-grow: 1;
+}

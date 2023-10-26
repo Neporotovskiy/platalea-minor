@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, json } from "react-router-dom";
 
-import { Homepage } from "pages/homepage";
-import { Articles } from "pages/articles";
-import { Article } from "pages/article";
+import { Homepage } from "pages/homepage/homepage";
+// import { Articles } from "pages/articles";
+// import { Article } from "pages/article";
 import { Error } from "pages/error";
 
 import { ARTICLES, TAGS } from "./fixtures";
@@ -13,14 +13,15 @@ const router = createBrowserRouter([
         path: "/",
         element: <Homepage />,
         loader: () => ({
-            featured: ARTICLES[0],
-            articles: ARTICLES.slice(1, 3),
+            main: ARTICLES[0],
+            featured: ARTICLES.slice(1, 4),
+            other: ARTICLES.slice(4),
         }),
         errorElement: <Error />,
     },
     {
         path: "/articles",
-        element: <Articles />,
+        element: null,
         loader: ({ request }) => {
             const url = new URL(request.url);
             const params = url.searchParams;
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/articles/:id",
-        element: <Article />,
+        element: null,
         loader: ({ params }) => {
             const article = ARTICLES.find(({ id }) => id === params.id);
             if (article === undefined) throw json(null, { status: 404 });
@@ -127,6 +128,6 @@ const router = createBrowserRouter([
     },
 ]);
 
-const root = ReactDOM.createRoot(window.main);
+const root = ReactDOM.createRoot(window.app);
 
 root.render(<RouterProvider router={router} />);

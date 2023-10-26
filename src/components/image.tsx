@@ -23,7 +23,7 @@ export const Image: FC<Props> = ({ src, alt, className, ...other }) => {
             },
             { once: true },
         );
-    }, []);
+    }, [ref]);
 
     return (
         <img

@@ -13,7 +13,7 @@ export const ARTICLES = [
         title: "Ground Branch",
         description: "Основная игровая дисциплина сообщества",
         cover: "/about-cover.jpg",
-        tags: [TAGS[0]],
+        tags: [TAGS[0], TAGS[1]],
     },
     {
         id: "1",
@@ -27,7 +27,7 @@ export const ARTICLES = [
         title: "Discord",
         description: "Запущен обновленный сервер",
         cover: "",
-        tags: [TAGS[4]],
+        tags: [TAGS[4], TAGS[2]],
     },
     {
         id: "3",
@@ -41,7 +41,7 @@ export const ARTICLES = [
         title: "Методичка",
         description: "Особенности поведения противника в темное время суток",
         cover: "/article-cover.jpg",
-        tags: [TAGS[3]],
+        tags: [TAGS[3], TAGS[4]],
     },
     {
         id: "5",
@@ -54,6 +54,14 @@ export const ARTICLES = [
         id: "6",
         title: "Развед.сводка №017",
         description: "Август 2023",
+        cover: "/article-cover.jpg",
+        tags: [TAGS[3], TAGS[4]],
+    },
+    {
+        id: "7",
+        title: "Использование укрытий на карте training facility",
+        description:
+            "В GROUND BRANCH вы работаете на Центр специальных операций / Специальную оперативную группу ЦРУ (SAC/SOG) и выполняете различные задачи в составе парамилитарного подразделения",
         cover: "/article-cover.jpg",
         tags: [TAGS[3]],
     },

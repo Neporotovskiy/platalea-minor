@@ -1,78 +1,105 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import type { FC, ReactNode } from "react";
+import clsx from "clsx";
 
-import { Widget } from "components/widget";
 import { Tag } from "components/tag";
 import { Text } from "components/text";
-import { Button } from "components/button";
 import { Image } from "components/image";
 
-import type { Tag as TagType } from "types/article";
+import type { Article as ArticleType } from "types/article";
 
 import styles from "./article.module.css";
 
-type Props = {
-    cover?: string;
-    children: ReactNode | ReactNode[];
-    [key: string]: unknown;
-};
-
-export const Article: FC<Props> = ({ cover, children, ...other }) => (
-    <Widget as="article" {...other}>
-        {cover ? (
-            <div className={styles.cover}>
-                <Image src={cover} alt="Иллюстрация статьи" />
-                <div className={styles.overlay}>{children}</div>
-            </div>
-        ) : (
-            children
-        )}
-    </Widget>
+export const Large = ({ id, tags, cover, title, description }: ArticleType) => (
+    <article data-id={id} className={clsx(styles.article, styles.large)}>
+        <Image src={cover} alt={title} />
+        <div className={styles.overlay}>
+            <header className={styles.header}>
+                {tags.map(({ id, name }) => (
+                    <Tag
+                        key={id}
+                        as={NavLink}
+                        to={"/articles?t=" + id}
+                        color="dark"
+                    >
+                        {name}
+                    </Tag>
+                ))}
+            </header>
+            <section className={styles.content}>
+                <NavLink to={"/articles/" + id}>
+                    <Text as="h2" size="large" color="light">
+                        {title}
+                    </Text>
+                </NavLink>
+                <Text as="p" size="medium" color="light">
+                    {description}
+                </Text>
+            </section>
+        </div>
+    </article>
 );
 
-export const Header: FC<{
-    children: ReactNode | ReactNode[];
-}> = ({ children }) => <header className={styles.header}>{children}</header>;
-
-export const Tags: FC<{
-    children: TagType[];
-}> = ({ children }) => (
-    <>
-        {children.map(({ id, name }) => (
-            <Tag key={name} color="light" as={NavLink} to={"/articles?t=" + id}>
-                {name}
-            </Tag>
-        ))}
-    </>
+export const Medium = ({
+    id,
+    tags,
+    cover,
+    title,
+    description,
+}: ArticleType) => (
+    <article data-id={id} className={clsx(styles.article, styles.medium)}>
+        <Image src={cover} alt={title} />
+        <div className={styles.overlay}>
+            <header className={styles.header}>
+                {tags.map(({ id, name }) => (
+                    <Tag
+                        key={id}
+                        as={NavLink}
+                        to={"/articles?t=" + id}
+                        color="dark"
+                    >
+                        {name}
+                    </Tag>
+                ))}
+            </header>
+            <section className={styles.content}>
+                <NavLink to={"/articles/" + id}>
+                    <Text as="h2" size="large" color="light">
+                        {title}
+                    </Text>
+                </NavLink>
+                <Text as="p" size="medium" color="light">
+                    {description}
+                </Text>
+            </section>
+        </div>
+    </article>
 );
 
-export const Content: FC<{
-    children: ReactNode | ReactNode[];
-}> = ({ children }) => <section className={styles.content}>{children}</section>;
-
-export const Title: FC<{ children: ReactNode | ReactNode[] }> = ({
-    children,
-}) => (
-    <Text as="h3" size="large" color="light" uppercase className={styles.title}>
-        {children}
-    </Text>
-);
-
-export const Description: FC<{ children: ReactNode | ReactNode[] }> = ({
-    children,
-}) => (
-    <Text as="p" size="medium" color="light" className={styles.description}>
-        {children}
-    </Text>
-);
-
-export const Link: FC<{
-    href: string;
-    children?: string;
-    [key: string]: unknown;
-}> = ({ href, children, ...other }) => (
-    <Button as={NavLink} to={href} color="light" {...other}>
-        {children}
-    </Button>
+export const Small = ({ id, tags, cover, title }: ArticleType) => (
+    <article data-id={id} className={clsx(styles.article, styles.small)}>
+        <section className={styles.image}>
+            <Image src={cover} alt={title} />
+            <div className={styles.overlay} />
+        </section>
+        <section className={styles.content}>
+            <header className={styles.header}>
+                {tags.map(({ id, name }) => (
+                    <Tag
+                        key={id}
+                        as={NavLink}
+                        to={"/articles?t=" + id}
+                        color="dark"
+                    >
+                        {name}
+                    </Tag>
+                ))}
+            </header>
+            <NavLink to={"/articles/" + id}>
+                <Text as="h2" size="medium" color="light">
+                    {title}
+                </Text>
+            </NavLink>
+        </section>
+    </article>
 );

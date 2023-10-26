@@ -1,21 +1,21 @@
 import React from "react";
-import clsx from "clsx";
 import type { JSX, FunctionComponent, FC, ReactNode } from "react";
+import clsx from "clsx";
 
 import styles from "./tag.module.css";
 
 export type Props = {
     as?: keyof JSX.IntrinsicElements | FunctionComponent<any>;
+    color: "dark" | "semi-dark";
     className?: string;
-    color: "dark" | "light";
     children: ReactNode | ReactNode[];
     [key: string]: unknown;
 };
 
 export const Tag: FC<Props> = ({
     as = "span",
-    className,
     color,
+    className,
     children,
     ...other
 }) =>

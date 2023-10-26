@@ -1,10 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 
-import { Breadcrumbs } from "features/breadcrumbs";
-import { Tags } from "features/article";
-
-import { DocumentTitle } from "components/document-title";
 import { Image } from "components/image";
 import { Text } from "components/text";
 
@@ -21,22 +17,6 @@ export const Article = () => {
 
     return (
         <>
-            <DocumentTitle>{"GSF - " + article.title}</DocumentTitle>
-            <Breadcrumbs>
-                {[
-                    {
-                        href: "/",
-                        title: "Главная",
-                    },
-                    {
-                        href: "/articles",
-                        title: "Статьи",
-                    },
-                    {
-                        title: article.title,
-                    },
-                ]}
-            </Breadcrumbs>
             <article className={styles.article}>
                 <section className={styles.header}>
                     <Image
@@ -46,13 +26,10 @@ export const Article = () => {
                     />
                     <div className={styles.overlay}>
                         <section className={styles.info}>
-                            <div>
-                                <Tags>{article.tags}</Tags>
-                            </div>
                             <Text as="h1" color="light" size="large" uppercase>
                                 {article.title}
                             </Text>
-                            <Text as="h2" color="light">
+                            <Text as="h2" color="light" size="medium">
                                 {article.description}
                             </Text>
                         </section>

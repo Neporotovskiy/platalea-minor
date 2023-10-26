@@ -2,12 +2,8 @@ import React from "react";
 import type { FC } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { Article, Content, Header } from "features/article";
-
-import { Tag } from "components/tag";
 import { Search } from "components/search";
 import { Select } from "components/select";
-import { Button } from "components/button";
 
 import type { Tag as TagType } from "types/article";
 
@@ -45,41 +41,26 @@ export const Filters: FC<Props> = ({ tags }) => {
     }, [params]);
 
     return (
-        <Article size="medium" color="semi-dark">
-            <Header>
-                <Tag color="light">Параметры поиска</Tag>
-            </Header>
-            <Content>
-                <Search
-                    type="text"
-                    value={query}
-                    onChange={setQuery}
-                    placeholder="Поиск по названию"
-                />
-                <Select
-                    value={tag}
-                    onChange={setTag}
-                    placeholder="Поиск по метке"
-                >
-                    {tags.map(({ id, name }) => ({
-                        value: id,
-                        label: name,
-                    }))}
-                </Select>
-                <Select
-                    value={order}
-                    onChange={setOrder}
-                    placeholder="Сортировка"
-                >
-                    {[
-                        { value: "asc", label: "Самые свежие" },
-                        { value: "desc", label: "Самые старые" },
-                    ]}
-                </Select>
-            </Content>
-            <Button color="light" onClick={applyFilters}>
-                Применить
-            </Button>
-        </Article>
+        <>
+            <Search
+                type="text"
+                value={query}
+                onChange={setQuery}
+                placeholder="Поиск по названию"
+            />
+            <Select value={tag} onChange={setTag} placeholder="Поиск по метке">
+                {tags.map(({ id, name }) => ({
+                    value: id,
+                    label: name,
+                }))}
+            </Select>
+            <Select value={order} onChange={setOrder} placeholder="Сортировка">
+                {[
+                    { value: "asc", label: "Самые свежие" },
+                    { value: "desc", label: "Самые старые" },
+                ]}
+            </Select>
+            <div onClick={applyFilters}>Применить</div>
+        </>
     );
 };

@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    background-color: rgb(var(--color-dark));
 }
 
 body {
@@ -9,9 +10,7 @@ body {
     max-width: 1440px;
     min-height: 100vh;
     margin: 0 auto;
-    background-color: rgb(var(--color-dark));
     font: var(--font-medium);
-    user-select: none;
 }
 
 .scrollable::-webkit-scrollbar,
@@ -24,43 +23,31 @@ body {
 }
 
 #header,
-#main,
+#app,
 #footer {
-    padding: 20px;
     display: flex;
 }
 
-#header {
-    align-items: center;
-    gap: 20px;
+#header,
+#footer {
+    padding: 10px;
+    color: rgb(var(--color-light));
 }
 
 #header .logotype {
     width: 50px;
     height: 50px;
     display: flex;
-    color: rgb(var(--color-light));
 }
 
 #header .logotype svg {
     margin: auto;
 }
 
-#main {
+#app {
     flex-grow: 1;
-    align-content: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
 }
 
 #footer {
     justify-content: space-between;
-    color: rgb(var(--color-light));
-}
-
-a:focus,
-button:focus,
-input:focus {
-    outline: none;
-    box-shadow: var(--outline-shadow);
 }
