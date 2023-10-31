@@ -20,6 +20,7 @@ body {
 
 .scrollable::-webkit-scrollbar-thumb {
     background-color: rgb(var(--color-light));
+    border-radius: 3px;
 }
 
 #header,

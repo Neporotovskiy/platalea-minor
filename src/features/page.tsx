@@ -1,11 +1,17 @@
 import React from "react";
+import type { ReactNode } from "react";
 
 import { Navigation } from "features/navigation";
 import { Advice } from "features/advice";
 
 import styles from "./page.module.css";
 
-export const Page = ({ name, children }: any) => {
+type Props = {
+    name: string;
+    children: ReactNode | ReactNode[];
+};
+
+export const Page = ({ name, children }: Props) => {
     React.useEffect(() => {
         document.title = name;
     }, [name]);

@@ -1,45 +1,57 @@
-.container {
+.select {
     position: relative;
 }
 
-.trigger {
-    width: 100%;
+.controls {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgb(var(--color-dark));
+    gap: 1px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.controls .toggle,
+.controls .clear {
+    background: none;
     border: none;
-    padding: 0 0 0 10px;
+    padding: 0;
+    outline: none;
 }
 
-.trigger.opened,
-.trigger.fulfilled {
-    box-shadow: var(--outline-shadow);
+.controls .toggle {
+    flex-grow: 1;
+    display: flex;
+    gap: 1px;
 }
 
-.trigger.opened .icon,
-.trigger:focus .icon {
-    background-color: rgb(var(--color-light));
-    color: rgb(var(--color-dark));
+.controls .toggle .label {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-grow: 1;
+    background-color: rgb(var(--color-semi-dark));
+    padding: 10px 10px 10px 20px;
+    box-sizing: border-box;
 }
 
-.trigger.opened .icon svg {
-    transform: rotate(180deg);
+.controls .toggle .label .text {
+    max-width: 190px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
+    background-color: rgb(var(--color-semi-dark));
     display: flex;
     justify-content: center;
     align-items: center;
-    background: none;
-    border: none;
     color: rgb(var(--color-light));
 }
 
 .dropdown {
-    max-height: 338px; /* 6 options */
+    max-height: 338px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -70,5 +82,3 @@
     background-color: rgb(var(--color-light));
     color: rgb(var(--color-dark));
 }
-
-

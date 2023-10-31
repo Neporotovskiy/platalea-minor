@@ -7,7 +7,7 @@ import { Text } from "components/text";
 import { Article as ArticleType } from "types/article";
 import { Content as ContentType } from "types/article";
 
-import { renderer } from "./blocks";
+import { renderer } from "features/blocks";
 import styles from "./article.module.css";
 
 type ArticleData = ArticleType & { content: ContentType[] };

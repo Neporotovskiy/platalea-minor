@@ -10,44 +10,15 @@ import type { Article as ArticleType } from "types/article";
 
 import styles from "./article.module.css";
 
-export const Large = ({ id, tags, cover, title, description }: ArticleType) => (
-    <article data-id={id} className={clsx(styles.article, styles.large)}>
-        <Image src={cover} alt={title} />
-        <div className={styles.overlay}>
-            <header className={styles.header}>
-                {tags.map(({ id, name }) => (
-                    <Tag
-                        key={id}
-                        as={NavLink}
-                        to={"/articles?t=" + id}
-                        color="dark"
-                    >
-                        {name}
-                    </Tag>
-                ))}
-            </header>
-            <section className={styles.content}>
-                <NavLink to={"/articles/" + id}>
-                    <Text as="h2" size="large" color="light">
-                        {title}
-                    </Text>
-                </NavLink>
-                <Text as="p" size="medium" color="light">
-                    {description}
-                </Text>
-            </section>
-        </div>
-    </article>
-);
-
-export const Medium = ({
+export const Article = ({
     id,
     tags,
     cover,
     title,
     description,
-}: ArticleType) => (
-    <article data-id={id} className={clsx(styles.article, styles.medium)}>
+    size,
+}: ArticleType & Record<"size", "medium" | "large">) => (
+    <article data-id={id} className={clsx(styles.article, styles[size])}>
         <Image src={cover} alt={title} />
         <div className={styles.overlay}>
             <header className={styles.header}>
@@ -64,11 +35,21 @@ export const Medium = ({
             </header>
             <section className={styles.content}>
                 <NavLink to={"/articles/" + id}>
-                    <Text as="h2" size="large" color="light">
+                    <Text
+                        as="h2"
+                        size="large"
+                        color="light"
+                        className={styles.title}
+                    >
                         {title}
                     </Text>
                 </NavLink>
-                <Text as="p" size="medium" color="light">
+                <Text
+                    as="p"
+                    size="medium"
+                    color="light"
+                    className={styles.description}
+                >
                     {description}
                 </Text>
             </section>
@@ -76,6 +57,7 @@ export const Medium = ({
     </article>
 );
 
+/*
 export const Small = ({ id, tags, cover, title }: ArticleType) => (
     <article data-id={id} className={clsx(styles.article, styles.small)}>
         <section className={styles.image}>
@@ -103,3 +85,4 @@ export const Small = ({ id, tags, cover, title }: ArticleType) => (
         </section>
     </article>
 );
+*/

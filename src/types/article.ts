@@ -13,7 +13,7 @@ export type Article = {
     tags: Tag[];
 };
 
-export type Blocks = "paragraph" | "header" | "picture" | "text" | "link";
+export type Blocks = "paragraph" | "header" | "text" | "link" | "picture";
 
 export type Content = {
     id: Identifier;

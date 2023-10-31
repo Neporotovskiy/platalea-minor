@@ -1,23 +1,16 @@
-.field {
-    background-color: rgb(var(--color-dark));
+.search {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.field.fulfilled {
-    box-shadow: var(--outline-shadow);
+    gap: 1px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .input {
-    height: 100%;
+    padding: 10px 20px;
     border: none;
-    background: none;
-    padding: 0 0 0 10px;
-    color: rgb(var(--color-light));
-    font: var(--font-medium);
-    text-transform: inherit;
     flex-grow: 1;
+    font: var(--font-medium);
+    outline: none;
 }
 
 .input::placeholder {
@@ -25,15 +18,22 @@
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 44px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.input,
+.icon {
+    background-color: rgb(var(--color-semi-dark));
     color: rgb(var(--color-light));
 }
 
-.field:focus-within .icon {
+.search.fulfilled .input,
+.search.fulfilled .icon,
+.search:focus-within .input,
+.search:focus-within .icon {
     background-color: rgb(var(--color-light));
     color: rgb(var(--color-dark));
 }

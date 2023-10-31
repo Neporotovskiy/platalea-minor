@@ -1,0 +1,14 @@
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter {
+    flex: 0 0 350px;
+}
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

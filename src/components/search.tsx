@@ -16,14 +16,13 @@ export const Search: FC<Props> = ({ className, value, onChange, ...other }) => {
         onChange(event.target.value);
     };
 
-    const fulfilled = value !== "";
-
     return (
         <label
-            className={clsx(styles.field, { [styles.fulfilled]: fulfilled })}
+            className={clsx(styles.search, {
+                [styles.fulfilled]: value !== "",
+            })}
         >
             <input
-                id="search-field"
                 type="text"
                 value={value}
                 onChange={handleChange}
