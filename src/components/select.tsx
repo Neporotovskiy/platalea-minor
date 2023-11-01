@@ -85,7 +85,7 @@ export const Select: FC<Props> = ({
                         >
                             {selected?.label ?? placeholder}
                         </Text>
-                        <Tag color="dark">+1</Tag>
+                        {/* <Tag color="dark">+1</Tag>*/}
                     </span>
                     <span className={styles.icon}>
                         <svg
@@ -127,25 +127,25 @@ export const Select: FC<Props> = ({
                     </span>
                 </button>
             </div>
-            {opened && (
-                <ul className={clsx(styles.dropdown, "scrollable")}>
-                    {children.map(({ value, label }) => (
-                        <li key={label} onClick={handle(value)}>
-                            <Text
-                                as="button"
-                                size="medium"
-                                color="dark"
-                                className={clsx(styles.option, {
-                                    [styles.selected]:
-                                        value === selected?.value,
-                                })}
-                            >
-                                {label}
-                            </Text>
-                        </li>
-                    ))}
-                </ul>
-            )}
+            <ul
+                hidden={!opened}
+                className={clsx(styles.dropdown, "scrollable")}
+            >
+                {children.map(({ value, label }) => (
+                    <li key={label} onClick={handle(value)}>
+                        <Text
+                            as="button"
+                            size="medium"
+                            color="dark"
+                            className={clsx(styles.option, {
+                                [styles.selected]: value === selected?.value,
+                            })}
+                        >
+                            {label}
+                        </Text>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };

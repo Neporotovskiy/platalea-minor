@@ -50,28 +50,49 @@
     color: rgb(var(--color-light));
 }
 
+.controls.opened {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.controls.opened .toggle .label,
+.controls.opened .icon,
+.controls.fulfilled .toggle .label,
+.controls.fulfilled .icon {
+    background-color: rgb(var(--color-light));
+}
+
+.controls.opened .toggle .label .text,
+.controls.opened .icon,
+.controls.fulfilled .toggle .label .text,
+.controls.fulfilled .icon {
+    color: rgb(var(--color-dark));
+}
+
 .dropdown {
-    max-height: 338px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 2px solid rgb(var(--color-light));
-    background-color: rgb(var(--color-dark));
+    width: 100%;
+    max-height: calc(44px * 10);
+    padding: 10px 5px;
+    margin: 0;
+    border: none;
     position: absolute;
     right: 0;
-    top: calc(100% + 10px);
-    padding: 10px;
-    margin: 0;
-    list-style-type: none;
+    top: 100%;
+    flex-direction: column;
+    background-color: rgb(var(--color-light));
+    border-top: 1px solid rgb(var(--color-dark));
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     box-sizing: border-box;
+    list-style-type: none;
+    overflow-y: auto;
     z-index: 10;
 }
 
 .option {
     width: 100%;
-    padding: 10px;
-    color: rgb(var(--color-light));
+    padding: 10px 15px;
+    border-radius: 5px;
     box-sizing: border-box;
     cursor: pointer;
 }
@@ -79,6 +100,6 @@
 .option.selected,
 .option:focus,
 .option:hover {
-    background-color: rgb(var(--color-light));
-    color: rgb(var(--color-dark));
+    background-color: rgb(var(--color-semi-dark));
+    color: rgb(var(--color-light));
 }
