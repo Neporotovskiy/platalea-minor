@@ -24,17 +24,15 @@
 }
 
 .controls .toggle .label {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
     flex-grow: 1;
     background-color: rgb(var(--color-semi-dark));
     padding: 10px 10px 10px 20px;
     box-sizing: border-box;
+    display: flex;
 }
 
 .controls .toggle .label .text {
-    max-width: 190px;
+    max-width: 230px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -69,16 +67,27 @@
     color: rgb(var(--color-dark));
 }
 
+.controls:not(.opened, .fulfilled) .toggle:focus .label,
+.controls:not(.opened, .fulfilled) .toggle:focus .icon,
+.controls:not(.opened, .fulfilled) .clear:focus .icon {
+    background-color: rgb(var(--color-light));
+}
+
+.controls:not(.opened, .fulfilled) .toggle:focus .label .text,
+.controls:not(.opened, .fulfilled) .toggle:focus .icon,
+.controls:not(.opened, .fulfilled) .clear:focus .icon {
+    color: rgb(var(--color-dark));
+}
+
 .dropdown {
     width: 100%;
     max-height: calc(44px * 10);
-    padding: 10px 5px;
+    padding: 10px;
     margin: 0;
     border: none;
     position: absolute;
     right: 0;
     top: 100%;
-    flex-direction: column;
     background-color: rgb(var(--color-light));
     border-top: 1px solid rgb(var(--color-dark));
     border-bottom-left-radius: 5px;
@@ -87,6 +96,10 @@
     list-style-type: none;
     overflow-y: auto;
     z-index: 10;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+    border: 5px solid rgb(var(--color-light));
 }
 
 .option {

@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React from "react";
+import type { FC } from "react";
 import clsx from "clsx";
 
 import { Text } from "components/text";
-import { Tag } from "components/tag";
 
-// import { useClickAway } from "hooks/use-click-away";
+import { useClickAway } from "hooks/use-click-away";
 
 import styles from "./select.module.css";
 
@@ -15,27 +15,6 @@ type Props = {
     onChange: (value: string) => void;
     placeholder: string;
     children: Option[];
-};
-
-const useClickAway = <T extends HTMLElement>(handler: VoidFunction) => {
-    const ref = React.useRef<T>(null);
-
-    const check = React.useCallback(
-        ({ target }: MouseEvent) => {
-            if ((ref.current as T).contains(target as Node)) return;
-            handler();
-        },
-        [handler],
-    );
-
-    React.useEffect(() => {
-        document.addEventListener("click", check);
-        return () => {
-            document.removeEventListener("click", check);
-        };
-    }, [check]);
-
-    return ref;
 };
 
 export const Select: FC<Props> = ({
@@ -85,7 +64,6 @@ export const Select: FC<Props> = ({
                         >
                             {selected?.label ?? placeholder}
                         </Text>
-                        {/* <Tag color="dark">+1</Tag>*/}
                     </span>
                     <span className={styles.icon}>
                         <svg
@@ -132,7 +110,7 @@ export const Select: FC<Props> = ({
                 className={clsx(styles.dropdown, "scrollable")}
             >
                 {children.map(({ value, label }) => (
-                    <li key={label} onClick={handle(value)}>
+                    <li key={label}>
                         <Text
                             as="button"
                             size="medium"
@@ -140,6 +118,7 @@ export const Select: FC<Props> = ({
                             className={clsx(styles.option, {
                                 [styles.selected]: value === selected?.value,
                             })}
+                            onClick={handle(value)}
                         >
                             {label}
                         </Text>

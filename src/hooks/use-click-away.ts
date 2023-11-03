@@ -5,7 +5,8 @@ export const useClickAway = <T extends HTMLElement>(handler: VoidFunction) => {
 
     const check = React.useCallback(
         ({ target }: MouseEvent) => {
-            if ((ref.current as T).contains(target as Node)) return;
+            if (ref.current === null) return;
+            if (ref.current.contains(target as Node)) return;
             handler();
         },
         [handler],
