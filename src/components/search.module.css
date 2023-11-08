@@ -1,8 +1,6 @@
 .search {
     display: flex;
-    gap: 1px;
-    border-radius: 5px;
-    overflow: hidden;
+    gap: 2px;
 }
 
 .input {
@@ -10,7 +8,8 @@
     border: none;
     flex-grow: 1;
     font: var(--font-medium);
-    outline: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .input::placeholder {
@@ -22,6 +21,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .input,
@@ -31,9 +32,7 @@
 }
 
 .search.fulfilled .input,
-.search.fulfilled .icon,
-.search:focus-within .input,
-.search:focus-within .icon {
+.search.fulfilled .icon {
     background-color: rgb(var(--color-light));
     color: rgb(var(--color-dark));
 }

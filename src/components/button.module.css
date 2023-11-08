@@ -1,20 +1,20 @@
-.link {
+.button {
     width: 100%;
     border: none;
     display: flex;
-    gap: 1px;
+    gap: 2px;
     text-decoration: none;
     cursor: pointer;
 }
 
-.link .label {
+.button .label {
     padding: 10px 20px;
     border-radius: 5px 0 0 5px;
     flex-grow: 1;
     font: var(--font-medium);
 }
 
-.link .icon {
+.button .icon {
     width: 44px;
     border-radius: 0 5px 5px 0;
     display: flex;
@@ -22,14 +22,14 @@
     align-items: center;
 }
 
-.link.semi-dark .label,
-.link.semi-dark .icon {
+.button.semi-dark .label,
+.button.semi-dark .icon {
     background-color: rgb(var(--color-semi-dark));
     color: rgb(var(--color-light));
 }
 
-.link.light .label,
-.link.light .icon {
+.button.light .label,
+.button.light .icon {
     background-color: rgb(var(--color-light));
     color: rgb(var(--color-dark));
 }

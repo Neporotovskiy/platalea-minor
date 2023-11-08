@@ -33,13 +33,13 @@ export const Articles = () => {
     const [tag, setTag] = React.useState<string>(get(params, "tags"));
     const [order, setOrder] = React.useState<string>(get(params, "order"));
 
-    const applyFilters = () => {
+    React.useEffect(() => {
         const result: Params = {};
         if (query) result["query"] = query;
         if (tag) result["tags"] = tag;
         if (order) result["order"] = order;
         setParams(result);
-    };
+    }, [query, tag, order, setParams]);
 
     React.useEffect(() => {
         setQuery(get(params, "query"));

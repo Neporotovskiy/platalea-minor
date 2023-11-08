@@ -25,7 +25,7 @@ export const Button: FC<Props> = ({
     React.createElement(
         as,
         {
-            className: clsx(styles.link, styles[color], className),
+            className: clsx(styles.button, styles[color], className),
             ...other,
         },
         <Text size="medium" color="light" className={styles.label}>

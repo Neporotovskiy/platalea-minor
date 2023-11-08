@@ -4,9 +4,7 @@
 
 .controls {
     display: flex;
-    gap: 1px;
-    border-radius: 5px;
-    overflow: hidden;
+    gap: 2px;
 }
 
 .controls .toggle,
@@ -14,21 +12,22 @@
     background: none;
     border: none;
     padding: 0;
-    outline: none;
 }
 
 .controls .toggle {
     flex-grow: 1;
     display: flex;
-    gap: 1px;
+    gap: 2px;
 }
 
 .controls .toggle .label {
+    display: flex;
     flex-grow: 1;
     background-color: rgb(var(--color-semi-dark));
     padding: 10px 10px 10px 20px;
     box-sizing: border-box;
-    display: flex;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .controls .toggle .label .text {
@@ -48,8 +47,25 @@
     color: rgb(var(--color-light));
 }
 
-.controls.opened {
+.controls .toggle:last-child .icon {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.controls.opened .toggle .label {
     border-bottom-left-radius: 0;
+}
+
+.controls.opened .toggle .icon {
+    border-bottom-right-radius: 0;
+}
+
+.controls .clear .icon {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.controls.opened .clear .icon {
     border-bottom-right-radius: 0;
 }
 
@@ -67,22 +83,10 @@
     color: rgb(var(--color-dark));
 }
 
-.controls:not(.opened, .fulfilled) .toggle:focus .label,
-.controls:not(.opened, .fulfilled) .toggle:focus .icon,
-.controls:not(.opened, .fulfilled) .clear:focus .icon {
-    background-color: rgb(var(--color-light));
-}
-
-.controls:not(.opened, .fulfilled) .toggle:focus .label .text,
-.controls:not(.opened, .fulfilled) .toggle:focus .icon,
-.controls:not(.opened, .fulfilled) .clear:focus .icon {
-    color: rgb(var(--color-dark));
-}
-
-.dropdown {
+.options {
     width: 100%;
     max-height: calc(44px * 10);
-    padding: 10px;
+    padding: 10px 5px;
     margin: 0;
     border: none;
     position: absolute;
@@ -98,21 +102,24 @@
     z-index: 10;
 }
 
-.dropdown::-webkit-scrollbar-thumb {
+.options::-webkit-scrollbar-thumb {
     border: 5px solid rgb(var(--color-light));
 }
 
 .option {
+    display: block;
     width: 100%;
     padding: 10px 15px;
-    border-radius: 5px;
     box-sizing: border-box;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.option.selected,
-.option:focus,
 .option:hover {
-    background-color: rgb(var(--color-semi-dark));
+    background-color: rgb(var(--color-semi-light));
+}
+
+.option.selected {
     color: rgb(var(--color-light));
+    background-color: rgb(var(--color-semi-dark));
 }

@@ -82,37 +82,33 @@ export const Select: FC<Props> = ({
                         </svg>
                     </span>
                 </button>
-                <button
-                    hidden={!fulfilled}
-                    onClick={handle("")}
-                    className={styles.clear}
-                >
-                    <span className={styles.icon}>
-                        <svg
-                            width="10"
-                            height="10"
-                            viewBox="0 0 10 10"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                clipRule="evenodd"
-                                d="M5.70662 5L9.59616 1.11046L8.88905 0.403353L4.99951 4.29289L1.11088 0.404259L0.403771 1.11137L4.2924 5L0.403771 8.88863L1.11088 9.59574L4.99951 5.70711L8.88905 9.59665L9.59616 8.88954L5.70662 5Z"
-                                fill="currentColor"
-                            />
-                        </svg>
-                    </span>
-                </button>
+                {fulfilled && (
+                    <button onClick={handle("")} className={styles.clear}>
+                        <span className={styles.icon}>
+                            <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 10 10"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    clipRule="evenodd"
+                                    d="M5.70662 5L9.59616 1.11046L8.88905 0.403353L4.99951 4.29289L1.11088 0.404259L0.403771 1.11137L4.2924 5L0.403771 8.88863L1.11088 9.59574L4.99951 5.70711L8.88905 9.59665L9.59616 8.88954L5.70662 5Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                        </span>
+                    </button>
+                )}
             </div>
-            <ul
-                hidden={!opened}
-                className={clsx(styles.dropdown, "scrollable")}
-            >
-                {children.map(({ value, label }) => (
-                    <li key={label}>
+            {opened && (
+                <ul className={clsx(styles.options, "scrollable")}>
+                    {children.map(({ value, label }) => (
                         <Text
-                            as="button"
+                            as="li"
+                            key={label}
                             size="medium"
                             color="dark"
                             className={clsx(styles.option, {
@@ -122,9 +118,9 @@ export const Select: FC<Props> = ({
                         >
                             {label}
                         </Text>
-                    </li>
-                ))}
-            </ul>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
