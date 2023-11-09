@@ -26,7 +26,7 @@ export const Article = ({
                     <Tag
                         key={id}
                         as={NavLink}
-                        to={"/articles?t=" + id}
+                        to={"/articles?tag=" + id}
                         color="dark"
                     >
                         {name}
@@ -56,33 +56,3 @@ export const Article = ({
         </div>
     </article>
 );
-
-/*
-export const Small = ({ id, tags, cover, title }: ArticleType) => (
-    <article data-id={id} className={clsx(styles.article, styles.small)}>
-        <section className={styles.image}>
-            <Image src={cover} alt={title} />
-            <div className={styles.overlay} />
-        </section>
-        <section className={styles.content}>
-            <header className={styles.header}>
-                {tags.map(({ id, name }) => (
-                    <Tag
-                        key={id}
-                        as={NavLink}
-                        to={"/articles?t=" + id}
-                        color="dark"
-                    >
-                        {name}
-                    </Tag>
-                ))}
-            </header>
-            <NavLink to={"/articles/" + id}>
-                <Text as="h2" size="medium" color="light">
-                    {title}
-                </Text>
-            </NavLink>
-        </section>
-    </article>
-);
-*/

@@ -7,7 +7,7 @@ import styles from "./text.module.css";
 type Props = {
     as?: keyof JSX.IntrinsicElements | FunctionComponent<any>;
     size: "medium" | "large";
-    color: "dark" | "light";
+    color: "dark" | "semi-dark" | "semi-light" | "light";
     uppercase?: boolean;
     className?: string;
     children: ReactNode | ReactNode[];

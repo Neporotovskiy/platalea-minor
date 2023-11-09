@@ -1,14 +1,15 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { NavLink } from "react-router-dom";
+import clsx from "clsx";
 
-import { Button } from "components/button";
+import { Text } from "components/text";
 
 import styles from "./navigation.module.css";
 
 export const Navigation = () => {
-    const current = window.location.pathname + window.location.search;
-    return (
-        <nav className={styles.navigation}>
+    return ReactDOM.createPortal(
+        <>
             {[
                 {
                     name: "Главная",
@@ -18,28 +19,21 @@ export const Navigation = () => {
                     name: "Все статьи",
                     url: "/articles",
                 },
-                {
-                    name: "Инструкции",
-                    url: "/articles?t=0",
-                },
-                {
-                    name: "Медиа",
-                    url: "/articles?t=1",
-                },
-                {
-                    name: "Магазин",
-                    url: "/articles?t=2",
-                },
             ].map(({ url, name }) => (
-                <Button
+                <Text
                     as={NavLink}
                     key={name}
                     to={url}
-                    color={url === current ? "light" : "semi-dark"}
+                    color="light"
+                    size="medium"
+                    className={clsx(styles.link, {
+                        [styles.selected]: url === window.location.pathname,
+                    })}
                 >
                     {name}
-                </Button>
+                </Text>
             ))}
-        </nav>
+        </>,
+        window.nav,
     );
 };

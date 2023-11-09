@@ -6,7 +6,7 @@ import styles from "./tag.module.css";
 
 export type Props = {
     as?: keyof JSX.IntrinsicElements | FunctionComponent<any>;
-    color: "dark" | "semi-dark";
+    color: "dark" | "semi-dark" | "semi-light" | "light";
     className?: string;
     children: ReactNode | ReactNode[];
     [key: string]: unknown;

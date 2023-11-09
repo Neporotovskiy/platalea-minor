@@ -5,10 +5,10 @@ html {
 }
 
 body {
+    max-width: 1090px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    max-width: 1440px;
-    min-height: 100vh;
     margin: 0 auto;
     font: var(--font-medium);
 }
@@ -28,12 +28,18 @@ body {
 #app,
 #footer {
     display: flex;
+    padding: 10px;
 }
 
 #header,
 #footer {
-    padding: 10px;
     color: rgb(var(--color-light));
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #header .logotype {
@@ -46,8 +52,15 @@ body {
     margin: auto;
 }
 
+#header #nav {
+    display: flex;
+    gap: 20px;
+}
+
 #app {
     flex-grow: 1;
+    flex-direction: column;
+    gap: 20px;
 }
 
 #footer {

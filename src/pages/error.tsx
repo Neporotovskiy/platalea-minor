@@ -1,22 +1,61 @@
 import React from "react";
 import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 
+import { Text } from "components/text";
+
+import { Navigation } from "features/navigation";
+
+import styles from "./error.module.css";
+
 export const Error = () => {
     const error = useRouteError() as Response;
 
-    let title;
+    React.useEffect(() => {
+        document.title = "Ошибка";
+    });
 
     if (isRouteErrorResponse(error)) {
         switch (error.status) {
             case 404: {
-                title = "Страница не найдена";
-                break;
+                return (
+                    <>
+                        <Navigation />
+                        <section className={styles.error}>
+                            <Text as="h2" size="large" color="light">
+                                404
+                            </Text>
+                            <Text as="p" size="medium" color="light">
+                                Страница не найдена
+                            </Text>
+                        </section>
+                    </>
+                );
             }
             default: {
-                title = "Ошибка получения данных";
+                return (
+                    <>
+                        <Navigation />
+                        <section className={styles.error}>
+                            <Text as="h2" size="large" color="light">
+                                {error.status}
+                            </Text>
+                            <Text as="p" size="medium" color="light">
+                                Ошибка обработки данных
+                            </Text>
+                        </section>
+                    </>
+                );
             }
         }
-    } else title = "Ошибка отображения";
-
-    return <>{title}</>;
+    } else
+        return (
+            <>
+                <Navigation />
+                <section className={styles.error}>
+                    <Text as="h2" size="large" color="light">
+                        Неизвестная ошибка
+                    </Text>
+                </section>
+            </>
+        );
 };

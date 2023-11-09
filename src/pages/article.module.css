@@ -27,7 +27,7 @@
     align-items: center;
     padding: 20px;
     box-sizing: border-box;
-    background-color: rgba(var(--color-semi-dark), .5);
+    background-color: rgba(var(--color-semi-dark), .75);
 }
 
 .info {

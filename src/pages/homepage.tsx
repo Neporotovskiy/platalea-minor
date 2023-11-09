@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 
-import { Page } from "features/page";
+import { Navigation } from "features/navigation";
 import { Article } from "features/article";
 
 import type { Article as ArticleType } from "types/article";
@@ -16,14 +16,19 @@ type HomepageData = {
 export const Homepage = () => {
     const { featured, articles } = useLoaderData() as HomepageData;
 
+    React.useEffect(() => {
+        document.title = "Главная";
+    });
+
     return (
-        <Page name="GSF - Главная">
+        <>
+            <Navigation />
             <Article size="large" {...featured} />
             <section className={styles.articles}>
                 {articles.map((article) => (
                     <Article key={article.id} size="medium" {...article} />
                 ))}
             </section>
-        </Page>
+        </>
     );
 };

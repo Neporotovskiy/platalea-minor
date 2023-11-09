@@ -15,6 +15,14 @@
     color: rgb(var(--color-dark));
 }
 
+.text.semi-dark {
+    color: rgb(var(--color-semi-dark));
+}
+
+.text.semi-light {
+    color: rgb(var(--color-semi-light));
+}
+
 .text.light {
     color: rgb(var(--color-light));
 }

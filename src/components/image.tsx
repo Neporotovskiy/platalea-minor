@@ -14,6 +14,7 @@ type Props = {
 export const Image: FC<Props> = ({ src, alt, className, ...other }) => {
     const ref = React.createRef<HTMLImageElement>();
     const [visible, setVisibility] = React.useState(false);
+    const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
         ref.current?.addEventListener(
@@ -23,7 +24,18 @@ export const Image: FC<Props> = ({ src, alt, className, ...other }) => {
             },
             { once: true },
         );
+        ref.current?.addEventListener(
+            "error",
+            () => {
+                setError(true);
+            },
+            { once: true },
+        );
     }, [ref]);
+
+    if (!src) return null;
+
+    if (error) return null;
 
     return (
         <img

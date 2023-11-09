@@ -18,7 +18,6 @@
 .article .overlay {
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--color-semi-dark), .5);
     position: absolute;
     left: 0;
     top: 0;
@@ -27,10 +26,13 @@
     justify-content: space-between;
 }
 
+.article .overlay:nth-child(2) {
+    background-color: rgba(var(--color-semi-dark), .75);
+}
+
 .article .overlay .header,
 .article .overlay .content {
     padding: 20px;
-    box-sizing: border-box;
 }
 
 .article .overlay .header {
@@ -70,52 +72,6 @@
     -webkit-line-clamp: 5;
 }
 
-/*
-SMALL
-
-
-.article.small {
-    width: 530px;
-    height: 141px;
-    background-color: rgb(var(--color-semi-dark));
-    display: flex;
-    border-radius: 5px;
-    overflow: hidden;
+.article .overlay .content .description:empty {
+    display: none;
 }
-
-.article.small .image {
-    width: 250px;
-    height: 100%;
-    position: relative;
-    flex-shrink: 0;
-}
-
-.article.small .image .overlay {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(var(--color-semi-dark), .5);
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.article.small .content {
-    padding: 20px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-grow: 1;
-    gap: 20px;
-}
-
-.article.small .content .header {
-    display: flex;
-    gap: 10px;
-}
-
-.article.small .content a {
-    text-decoration: none;
-}
-*/

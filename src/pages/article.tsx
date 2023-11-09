@@ -7,7 +7,9 @@ import { Text } from "components/text";
 import { Article as ArticleType } from "types/article";
 import { Content as ContentType } from "types/article";
 
+import { Navigation } from "features/navigation";
 import { renderer } from "features/blocks";
+
 import styles from "./article.module.css";
 
 type ArticleData = ArticleType & { content: ContentType[] };
@@ -15,8 +17,13 @@ type ArticleData = ArticleType & { content: ContentType[] };
 export const Article = () => {
     const article = useLoaderData() as ArticleData;
 
+    React.useEffect(() => {
+        document.title = article.title;
+    });
+
     return (
         <>
+            <Navigation />
             <article className={styles.article}>
                 <section className={styles.header}>
                     <Image

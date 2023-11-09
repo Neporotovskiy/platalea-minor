@@ -25,9 +25,9 @@ const router = createBrowserRouter([
         loader: ({ request }) => {
             const url = new URL(request.url);
             const params = url.searchParams;
-            const query = params.get("q") ?? "";
-            const tag = params.get("t") ?? "";
-            const order = params.get("o") ?? "";
+            const query = params.get("query") ?? "";
+            const tag = params.get("tag") ?? "";
+            const order = params.get("order") ?? "";
 
             console.log("--------- Filters ----------");
             console.log("Search:", query || "<empty>");

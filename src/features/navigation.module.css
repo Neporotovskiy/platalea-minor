@@ -1,8 +1,9 @@
-.navigation {
-    position: sticky;
-    left: 0;
-    top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.link {
+    cursor: pointer;
+    opacity: .5;
+}
+
+.link.selected {
+    cursor: default;
+    opacity: 1;
 }

@@ -1,5 +1,6 @@
 /// <reference types="react-scripts" />
 
 interface Window {
-    app: HTMLDivElement;
+    app: HTMLElement;
+    nav: HTMLElement;
 }

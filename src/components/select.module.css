@@ -93,7 +93,7 @@
     right: 0;
     top: 100%;
     background-color: rgb(var(--color-light));
-    border-top: 1px solid rgb(var(--color-dark));
+    border-top: 2px solid rgb(var(--color-dark));
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     box-sizing: border-box;
@@ -123,3 +123,26 @@
     color: rgb(var(--color-light));
     background-color: rgb(var(--color-semi-dark));
 }
+
+@supports selector(:has(+ *)) {
+    .option:hover:has(+ .selected) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .option:hover + .selected {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .selected:has(+ .option:hover) {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .selected + .option:hover {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+
