@@ -31,6 +31,8 @@
     color: rgb(var(--color-light));
 }
 
+.search:focus-within .input,
+.search:focus-within .icon,
 .search.fulfilled .input,
 .search.fulfilled .icon {
     background-color: rgb(var(--color-light));
