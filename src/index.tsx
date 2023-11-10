@@ -1,5 +1,6 @@
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider, json } from "react-router-dom";
+import { createBrowserRouter, json, RouterProvider } from "react-router-dom";
 
 import { Homepage } from "pages/homepage";
 import { Articles } from "pages/articles";
@@ -7,7 +8,6 @@ import { Article } from "pages/article";
 import { Error } from "pages/error";
 
 import { ARTICLES, TAGS } from "./fixtures";
-import React from "react";
 
 const router = createBrowserRouter([
     {
@@ -130,4 +130,8 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(window.app);
 
-root.render(<RouterProvider router={router} />);
+root.render(
+    <StrictMode>
+        <RouterProvider router={router} />
+    </StrictMode>,
+);

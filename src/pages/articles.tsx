@@ -7,8 +7,6 @@ import { Article } from "features/article";
 import { Search } from "components/search";
 import { Select } from "components/select";
 
-import { useDebouncedValue } from "hooks/use-debounced-value";
-
 import type { Article as ArticleType, Tag as TagType } from "types/article";
 
 import styles from "./articles.module.css";
@@ -18,34 +16,23 @@ type ArticlesData = {
     articles: ArticleType[];
 };
 
-type Params = {
-    query?: string;
-    tag?: string;
-    order?: string;
-};
-
-const get = (searchParams: URLSearchParams, name: string) =>
-    searchParams.get(name) ?? "";
-
 export const Articles = () => {
     const { tags, articles } = useLoaderData() as ArticlesData;
 
     const [params, setParams] = useSearchParams(window.location.search);
-    const [query, setQuery] = React.useState<string>(get(params, "query"));
-    const [tag, setTag] = React.useState<string>(get(params, "tag"));
-    const [order, setOrder] = React.useState<string>(get(params, "order"));
-    const deferredQuery = React.useDeferredValue<string>(query);
-    const deferredTag = React.useDeferredValue<string>(tag);
-    const deferredOrder = React.useDeferredValue<string>(order);
-    const debouncedQuery = useDebouncedValue<string>(deferredQuery, 500);
 
-    React.useEffect(() => {
-        const result: Params = {};
-        if (deferredTag) result["tag"] = deferredTag;
-        if (deferredOrder) result["order"] = deferredOrder;
-        if (debouncedQuery) result["query"] = debouncedQuery;
-        setParams(result);
-    }, [deferredTag, deferredOrder, debouncedQuery, setParams]);
+    const getParam = (key: string) => params.get(key) ?? "";
+
+    const setParam = (key: string) => (value: any) => {
+        setParams((applied) => {
+            if (value === "") {
+                applied.delete(key);
+            } else {
+                applied.set(key, value);
+            }
+            return applied;
+        });
+    };
 
     React.useEffect(() => {
         document.title = "Все статьи";
@@ -58,15 +45,15 @@ export const Articles = () => {
                 <div className={styles.filter}>
                     <Search
                         type="text"
-                        value={query}
-                        onChange={setQuery}
+                        value={getParam("query")}
+                        onChange={setParam("query")}
                         placeholder="Поиск по названию"
                     />
                 </div>
                 <div className={styles.filter}>
                     <Select
-                        value={tag}
-                        onChange={setTag}
+                        value={getParam("tag")}
+                        onChange={setParam("tag")}
                         placeholder="Поиск по метке"
                     >
                         {tags.map(({ id, name }) => ({
@@ -77,8 +64,8 @@ export const Articles = () => {
                 </div>
                 <div className={styles.filter}>
                     <Select
-                        value={order}
-                        onChange={setOrder}
+                        value={getParam("order")}
+                        onChange={setParam("order")}
                         placeholder="Сортировка"
                     >
                         {[

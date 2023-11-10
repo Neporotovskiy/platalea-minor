@@ -2,18 +2,32 @@ import React, { ChangeEvent } from "react";
 import type { FC } from "react";
 import clsx from "clsx";
 
+import { useDebouncedValue } from "hooks/use-debounced-value";
+
 import styles from "./search.module.css";
 
 type Props = {
-    className?: string;
-    value?: string;
+    value: string;
     onChange: (searchQuery: string) => void;
+    className?: string;
     [key: string]: unknown;
 };
 
 export const Search: FC<Props> = ({ className, value, onChange, ...other }) => {
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        onChange(event.target.value);
+    const [query, setQuery] = React.useState<string>(value);
+
+    const dQuery = useDebouncedValue(query, 500);
+
+    React.useEffect(() => {
+        onChange(dQuery);
+    }, [dQuery]);
+
+    React.useEffect(() => {
+        setQuery(value);
+    }, [value]);
+
+    const handler = (event: ChangeEvent<HTMLInputElement>) => {
+        setQuery(event.target.value);
     };
 
     return (
@@ -24,8 +38,8 @@ export const Search: FC<Props> = ({ className, value, onChange, ...other }) => {
         >
             <input
                 type="text"
-                value={value}
-                onChange={handleChange}
+                value={query}
+                onChange={handler}
                 className={clsx(styles.input, className)}
                 {...other}
             />
