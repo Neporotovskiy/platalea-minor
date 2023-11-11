@@ -20,6 +20,14 @@ export const Homepage = () => {
         document.title = "Главная";
     });
 
+    React.useEffect(() => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, []);
+
     return (
         <>
             <Navigation />

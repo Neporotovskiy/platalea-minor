@@ -38,6 +38,14 @@ export const Articles = () => {
         document.title = "Все статьи";
     });
 
+    React.useEffect(() => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, []);
+
     return (
         <>
             <Navigation />

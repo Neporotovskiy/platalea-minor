@@ -11,6 +11,10 @@
     font: var(--font-large);
 }
 
+.text.x-large {
+    font: var(--font-x-large);
+}
+
 .text.dark {
     color: rgb(var(--color-dark));
 }
@@ -25,10 +29,6 @@
 
 .text.light {
     color: rgb(var(--color-light));
-}
-
-.text.uppercase {
-    text-transform: uppercase;
 }
 
 .text:empty {

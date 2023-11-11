@@ -14,6 +14,14 @@ export const Error = () => {
         document.title = "Ошибка";
     });
 
+    React.useEffect(() => {
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: "smooth",
+        });
+    }, []);
+
     if (isRouteErrorResponse(error)) {
         switch (error.status) {
             case 404: {

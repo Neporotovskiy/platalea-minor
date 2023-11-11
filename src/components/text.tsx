@@ -6,9 +6,8 @@ import styles from "./text.module.css";
 
 type Props = {
     as?: keyof JSX.IntrinsicElements | FunctionComponent<any>;
-    size: "medium" | "large";
+    size: "medium" | "large" | "x-large";
     color: "dark" | "semi-dark" | "semi-light" | "light";
-    uppercase?: boolean;
     className?: string;
     children: ReactNode | ReactNode[];
     [key: string]: unknown;
@@ -18,7 +17,6 @@ export const Text: FC<Props> = ({
     as = "span",
     size,
     color,
-    uppercase,
     className,
     children,
     ...other
@@ -30,7 +28,6 @@ export const Text: FC<Props> = ({
                 styles.text,
                 styles[size as string],
                 styles[color as string],
-                uppercase && styles.uppercase,
                 className,
             ),
             ...other,
