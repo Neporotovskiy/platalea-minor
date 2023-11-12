@@ -7,7 +7,7 @@
     padding: 10px 20px;
     border: none;
     flex-grow: 1;
-    font: var(--font-medium);
+    font: var(--font-small);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }

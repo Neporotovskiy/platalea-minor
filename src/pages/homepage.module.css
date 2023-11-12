@@ -1,3 +1,22 @@
+.section {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.section .header a {
+    display: block;
+    opacity: .5;
+    cursor: pointer;
+}
+
 .articles {
     display: flex;
     gap: 10px;

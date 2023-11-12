@@ -25,5 +25,5 @@
 }
 
 .preview::backdrop {
-    background-color: rgba(var(--color-dark), .75);
+    background-color: rgba(var(--color-dark), .8);
 }

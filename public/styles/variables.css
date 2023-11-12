@@ -3,9 +3,9 @@
     --color-semi-light: 205, 205, 205;
     --color-semi-dark: 43, 43, 43;
     --color-dark: 22, 22, 22;
-    --font-medium: normal 16px/24px "IBM Plex Mono", sans-serif;
-    --font-large: normal 26px/32px "IBM Plex Mono", sans-serif;
-    --font-x-large: normal 40px/50px "IBM Plex Mono", sans-serif;
+    --font-small: normal 16px/24px "IBM Plex Mono", sans-serif;
+    --font-medium: normal 26px/32px "IBM Plex Mono", sans-serif;
+    --font-large: normal 40px/50px "IBM Plex Mono", sans-serif;
 }
 
 ::backdrop {

@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    font: var(--font-medium);
+    font: var(--font-small);
 }
 
 body.no-scroll {

@@ -12,7 +12,7 @@ export const BLOCKS: Record<Blocks, FC<any>> = {
     header: ({ children, ...props }) => (
         <Text
             as="h2"
-            size="large"
+            size="medium"
             color="light"
             {...props}
             className={styles.header}
@@ -27,7 +27,7 @@ export const BLOCKS: Record<Blocks, FC<any>> = {
     paragraph: ({ children, ...props }) => (
         <Text
             as="p"
-            size="medium"
+            size="small"
             color="light"
             className={styles.paragraph}
             {...props}
@@ -36,7 +36,7 @@ export const BLOCKS: Record<Blocks, FC<any>> = {
         </Text>
     ),
     link: ({ children, ...props }) => (
-        <Text as="a" size="medium" color="light" {...props}>
+        <Text as="a" size="small" color="light" {...props}>
             {children}
         </Text>
     ),

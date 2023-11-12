@@ -29,10 +29,10 @@ export const Error = () => {
                     <>
                         <Navigation />
                         <section className={styles.error}>
-                            <Text as="h2" size="large" color="light">
+                            <Text as="h2" size="medium" color="light">
                                 404
                             </Text>
-                            <Text as="p" size="medium" color="light">
+                            <Text as="p" size="small" color="light">
                                 Страница не найдена
                             </Text>
                         </section>
@@ -44,10 +44,10 @@ export const Error = () => {
                     <>
                         <Navigation />
                         <section className={styles.error}>
-                            <Text as="h2" size="large" color="light">
+                            <Text as="h2" size="medium" color="light">
                                 {error.status}
                             </Text>
-                            <Text as="p" size="medium" color="light">
+                            <Text as="p" size="small" color="light">
                                 Ошибка обработки данных
                             </Text>
                         </section>
@@ -60,7 +60,7 @@ export const Error = () => {
             <>
                 <Navigation />
                 <section className={styles.error}>
-                    <Text as="h2" size="large" color="light">
+                    <Text as="h2" size="medium" color="light">
                         Неизвестная ошибка
                     </Text>
                 </section>

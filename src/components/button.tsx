@@ -28,7 +28,7 @@ export const Button: FC<Props> = ({
             className: clsx(styles.button, styles[color], className),
             ...other,
         },
-        <Text size="medium" color="light" className={styles.label}>
+        <Text size="small" color="light" className={styles.label}>
             {children}
         </Text>,
         <span className={styles.icon}>

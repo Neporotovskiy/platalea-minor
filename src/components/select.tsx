@@ -58,7 +58,7 @@ export const Select: FC<Props> = ({
                 <button onClick={toggle} className={styles.toggle}>
                     <span className={styles.label}>
                         <Text
-                            size="medium"
+                            size="small"
                             color="light"
                             className={styles.text}
                         >
@@ -109,7 +109,7 @@ export const Select: FC<Props> = ({
                         <Text
                             as="li"
                             key={label}
-                            size="medium"
+                            size="small"
                             color="dark"
                             className={clsx(styles.option, {
                                 [styles.selected]: value === selected?.value,

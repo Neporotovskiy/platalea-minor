@@ -2,7 +2,7 @@
     display: inline-block;
     padding: 0 7px;
     border-radius: 3px;
-    font: var(--font-medium);
+    font: var(--font-small);
     color: rgb(var(--color-light));
     text-decoration: none;
 }

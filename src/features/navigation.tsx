@@ -25,7 +25,7 @@ export const Navigation = () => {
                     key={name}
                     to={url}
                     color="light"
-                    size="medium"
+                    size="small"
                     className={clsx(styles.link, {
                         [styles.selected]: url === window.location.pathname,
                     })}

@@ -1,0 +1,14 @@
+.discord {
+    padding: 20px;
+    background-color: rgb(88, 101, 242); /* Discord brand color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.discord .icon {
+    width: 36px;
+}

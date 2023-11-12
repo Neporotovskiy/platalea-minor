@@ -27,7 +27,7 @@
 }
 
 .article .overlay:nth-child(2) {
-    background-color: rgba(var(--color-semi-dark), .75);
+    background-image: linear-gradient(to top, rgba(var(--color-semi-dark), .8) 25%, rgba(var(--color-semi-dark), .2) 75%);
 }
 
 .article .overlay .header,

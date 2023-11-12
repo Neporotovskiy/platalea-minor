@@ -11,7 +11,7 @@
     padding: 10px 20px;
     border-radius: 5px 0 0 5px;
     flex-grow: 1;
-    font: var(--font-medium);
+    font: var(--font-small);
 }
 
 .button .icon {

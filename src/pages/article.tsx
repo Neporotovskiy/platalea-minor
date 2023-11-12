@@ -3,6 +3,7 @@ import { NavLink, useLoaderData } from "react-router-dom";
 
 import { Navigation } from "features/navigation";
 import { renderer } from "features/blocks";
+import { Discord } from "features/discord";
 
 import { Image } from "components/image";
 import { Text } from "components/text";
@@ -52,10 +53,10 @@ export const Article = () => {
                                 </Tag>
                             ))}
                         </div>
-                        <Text as="h1" color="light" size="x-large">
+                        <Text as="h1" color="light" size="large">
                             {article.title}
                         </Text>
-                        <Text as="h2" color="light" size="medium">
+                        <Text as="h2" color="light" size="small">
                             {article.description}
                         </Text>
                     </div>
@@ -70,6 +71,7 @@ export const Article = () => {
                 <section className={styles.content}>
                     {article.content.map(renderer)}
                 </section>
+                <Discord />
             </article>
         </>
     );

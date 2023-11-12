@@ -37,7 +37,7 @@ export const Article = ({
                 <NavLink to={"/articles/" + id}>
                     <Text
                         as="h2"
-                        size={size === "large" ? "x-large" : "large"}
+                        size={size === "large" ? "large" : "medium"}
                         color="light"
                         className={styles.title}
                     >
@@ -46,7 +46,7 @@ export const Article = ({
                 </NavLink>
                 <Text
                     as="p"
-                    size="medium"
+                    size="small"
                     color="light"
                     className={styles.description}
                 >

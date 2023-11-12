@@ -3,6 +3,7 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 
 import { Navigation } from "features/navigation";
 import { Article } from "features/article";
+import { Discord } from "features/discord";
 
 import { Search } from "components/search";
 import { Select } from "components/select";
@@ -88,6 +89,7 @@ export const Articles = () => {
                     <Article key={article.id} size="medium" {...article} />
                 ))}
             </section>
+            <Discord />
         </>
     );
 };
