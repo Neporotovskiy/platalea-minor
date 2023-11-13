@@ -6,7 +6,7 @@ import { Article } from "features/article";
 import { Discord } from "features/discord";
 
 import { Search } from "components/search";
-import { Select } from "components/select";
+import { MultiSelect, Select } from "components/select";
 
 import type { Article as ArticleType, Tag as TagType } from "types/article";
 
@@ -22,18 +22,46 @@ export const Articles = () => {
 
     const [params, setParams] = useSearchParams(window.location.search);
 
-    const getParam = (key: string) => params.get(key) ?? "";
+    const getStringParam = (key: string): string => params.get(key) ?? "";
 
-    const setParam = (key: string) => (value: any) => {
-        setParams((applied) => {
-            if (value === "") {
-                applied.delete(key);
-            } else {
-                applied.set(key, value);
-            }
-            return applied;
-        });
+    const setStringParam =
+        (key: string) =>
+        (value: string): void => {
+            setParams((search) => {
+                if (value === "") {
+                    search.delete(key);
+                } else {
+                    search.set(key, value);
+                }
+                return search;
+            });
+        };
+
+    const getArrayParam = (key: string): string[] => {
+        const unique = new Set<string>(params.getAll(key));
+        return Array.from(unique);
     };
+
+    const setArrayParam =
+        (key: string) =>
+        (values: string[]): void => {
+            setParams((search) => {
+                if (values.length === 0) {
+                    search.delete(key);
+                } else if (values.length === 1) {
+                    search.set(key, values[0]);
+                } else {
+                    values.forEach((value, index) => {
+                        if (index === 0) {
+                            search.set(key, value);
+                        } else {
+                            search.append(key, value);
+                        }
+                    });
+                }
+                return search;
+            });
+        };
 
     React.useEffect(() => {
         document.title = "Все статьи";
@@ -54,27 +82,27 @@ export const Articles = () => {
                 <div className={styles.filter}>
                     <Search
                         type="text"
-                        value={getParam("query")}
-                        onChange={setParam("query")}
+                        value={getStringParam("query")}
+                        onChange={setStringParam("query")}
                         placeholder="Поиск по названию"
                     />
                 </div>
                 <div className={styles.filter}>
-                    <Select
-                        value={getParam("tag")}
-                        onChange={setParam("tag")}
+                    <MultiSelect
+                        values={getArrayParam("tag")}
+                        onChange={setArrayParam("tag")}
                         placeholder="Поиск по метке"
                     >
                         {tags.map(({ id, name }) => ({
                             value: id,
                             label: name,
                         }))}
-                    </Select>
+                    </MultiSelect>
                 </div>
                 <div className={styles.filter}>
                     <Select
-                        value={getParam("order")}
-                        onChange={setParam("order")}
+                        value={getStringParam("order")}
+                        onChange={setStringParam("order")}
                         placeholder="Сортировка"
                     >
                         {[

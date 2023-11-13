@@ -69,7 +69,5 @@ body.no-scroll {
 }
 
 #footer {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    justify-content: space-between;
 }

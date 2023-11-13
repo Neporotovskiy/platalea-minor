@@ -45,13 +45,13 @@ const router = createBrowserRouter([
             const url = new URL(request.url);
             const params = url.searchParams;
             const query = params.get("query") ?? "";
-            const tag = params.get("tag") ?? "";
+            const unique = new Set<string>(params.getAll("tag"));
+            const tag = Array.from(unique);
             const order = params.get("order") ?? "";
 
-            console.log("--------- Filters ----------");
-            console.log("Search:", query || "<empty>");
-            console.log("Tag:", tag || "<empty>");
-            console.log("Order:", order || "<empty>");
+            console.log("Search:", query);
+            console.log("Tag:", tag);
+            console.log("Order:", order);
             console.log("----------------------------");
 
             return {

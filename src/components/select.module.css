@@ -31,7 +31,7 @@
 }
 
 .controls .toggle .label .text {
-    max-width: 230px;
+    max-width: 220px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -115,6 +115,10 @@
     cursor: pointer;
 }
 
+.option:not(:last-child) {
+    margin-bottom: 5px;
+}
+
 .option:hover {
     background-color: rgb(var(--color-semi-light));
 }
@@ -123,26 +127,3 @@
     color: rgb(var(--color-light));
     background-color: rgb(var(--color-semi-dark));
 }
-
-@supports selector(:has(+ *)) {
-    .option:hover:has(+ .selected) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    .option:hover + .selected {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    .selected:has(+ .option:hover) {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    .selected + .option:hover {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-    }
-}
-
