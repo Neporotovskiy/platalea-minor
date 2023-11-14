@@ -12,7 +12,7 @@ export const Error = () => {
 
     React.useEffect(() => {
         document.title = "Ошибка";
-    });
+    }, []);
 
     React.useEffect(() => {
         window.scroll({

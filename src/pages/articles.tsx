@@ -65,7 +65,7 @@ export const Articles = () => {
 
     React.useEffect(() => {
         document.title = "Все статьи";
-    });
+    }, []);
 
     React.useEffect(() => {
         window.scroll({

@@ -11,7 +11,7 @@ import styles from "./about.module.css";
 export const About = () => {
     React.useEffect(() => {
         document.title = "О проекте";
-    });
+    }, []);
 
     return (
         <>

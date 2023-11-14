@@ -31,7 +31,7 @@ export const Homepage = () => {
 
     React.useEffect(() => {
         document.title = "Главная";
-    });
+    }, []);
 
     React.useEffect(() => {
         window.scroll({

@@ -21,7 +21,7 @@ export const Article = () => {
 
     React.useEffect(() => {
         document.title = article.title;
-    });
+    }, [article.title]);
 
     React.useEffect(() => {
         if (window.location.hash) {
