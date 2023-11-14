@@ -19,6 +19,10 @@ export const Navigation = () => {
                     name: "Все статьи",
                     url: "/articles",
                 },
+                {
+                    name: "О проекте",
+                    url: "/about",
+                },
             ].map(({ url, name }) => (
                 <Text
                     as={NavLink}

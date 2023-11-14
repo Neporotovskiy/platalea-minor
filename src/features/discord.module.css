@@ -10,5 +10,6 @@
 }
 
 .discord .icon {
+    flex-shrink: 0;
     width: 36px;
 }

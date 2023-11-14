@@ -1,0 +1,30 @@
+.about,
+.header,
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.about .header .content h1,
+.about .header .content h2 {
+    text-align: center;
+}
+
+.about .header .tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.about .content {
+    width: 710px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.about .cover {
+    border-radius: 5px;
+}

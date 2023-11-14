@@ -5,6 +5,7 @@ import { createBrowserRouter, json, RouterProvider } from "react-router-dom";
 import { Homepage } from "pages/homepage";
 import { Articles } from "pages/articles";
 import { Article } from "pages/article";
+import { About } from "pages/about";
 import { Error } from "pages/error";
 
 import { ARTICLES, TAGS } from "./fixtures";
@@ -146,6 +147,11 @@ const router = createBrowserRouter([
                 ],
             };
         },
+        errorElement: <Error />,
+    },
+    {
+        path: "/about",
+        element: <About />,
         errorElement: <Error />,
     },
 ]);
