@@ -18,26 +18,33 @@ export const About = () => {
             <Navigation />
             <article className={styles.about}>
                 <header className={styles.header}>
-                    <div className={styles.content}>
-                        <Text as="h1" color="light" size="large">
-                            Мы - игровое сообщество
-                            <br />
-                            «Ghost Special Force»
-                        </Text>
-                        <Text as="h2" color="light" size="small">
-                            Фанаты хардкорных тактических шутеров от первого
-                            лица.
-                        </Text>
-                    </div>
+                    <Text
+                        as="h1"
+                        color="light"
+                        size="large"
+                        className={styles.title}
+                    >
+                        Мы - игровое сообщество
+                        <br />
+                        «Ghost Special Force»
+                    </Text>
+                    <Text
+                        as="h2"
+                        color="light"
+                        size="small"
+                        className={styles.description}
+                    >
+                        Фанаты хардкорных тактических шутеров от первого лица.
+                    </Text>
                     <Image
-                        src="/about-us.jpg"
                         width="1070"
                         height="602"
+                        src="/about-us.jpg"
                         className={styles.cover}
                     />
                 </header>
                 <section className={styles.content}>
-                    <Text as="p" color="light" size="medium">
+                    <Text as="p" color="light" size="small">
                         Цель нашего сообщества – объединить людей со схожими
                         игровыми предпочтениями и стилем игры, и дать им
                         возможность играть в дружественной атмосфере, получая
@@ -45,9 +52,12 @@ export const About = () => {
                         заданий. Мы рады всем, кто ценит вдумчивый геймплей и
                         стремится играть в команде.
                     </Text>
-                </section>
-                <section className={styles.content}>
-                    <Text as="h2" color="light" size="medium">
+                    <Text
+                        as="h2"
+                        color="light"
+                        size="medium"
+                        className={styles.title}
+                    >
                         Регулярные игры
                     </Text>
                     <Text as="p" color="light" size="small">
@@ -56,7 +66,12 @@ export const About = () => {
                         команде. Мы всегда стремимся к победе и получению
                         незабываемых эмоций от игрового процесса.
                     </Text>
-                    <Text as="h2" color="light" size="medium">
+                    <Text
+                        as="h2"
+                        color="light"
+                        size="medium"
+                        className={styles.title}
+                    >
                         Соревновательные игры
                     </Text>
                     <Text as="p" color="light" size="small">
@@ -64,7 +79,12 @@ export const About = () => {
                         различных соревнованиях, как внутренних, так и
                         международных.
                     </Text>
-                    <Text as="h2" color="light" size="medium">
+                    <Text
+                        as="h2"
+                        color="light"
+                        size="medium"
+                        className={styles.title}
+                    >
                         Игровой контент
                     </Text>
                     <Text as="p" color="light" size="small">
@@ -74,15 +94,12 @@ export const About = () => {
                         знакомьте с новинками жанра и держите в курсе новостей
                         игровой индустрии.
                     </Text>
-                    <Text as="h2" color="light" size="medium">
-                        Безопасность
-                    </Text>
-                    <Text as="p" color="light" size="small">
-                        Мы строго следим за соблюдением норм поведения в
-                        сообществе и стремимся поддерживать дружескую атмосферу.
-                        Вы будете чувствовать себя комфортно.
-                    </Text>
-                    <Text as="h2" color="light" size="medium">
+                    <Text
+                        as="h2"
+                        color="light"
+                        size="medium"
+                        className={styles.title}
+                    >
                         Структура
                     </Text>
                     <Text as="p" color="light" size="small">
@@ -90,6 +107,19 @@ export const About = () => {
                         которая способствует повышению уровня организации и
                         дисциплины, а также позволяет получить более аутентичные
                         впечатления от игрового процесса.
+                    </Text>
+                    <Text
+                        as="h2"
+                        color="light"
+                        size="medium"
+                        className={styles.title}
+                    >
+                        Безопасность
+                    </Text>
+                    <Text as="p" color="light" size="small">
+                        Мы строго следим за соблюдением норм поведения в
+                        сообществе и стремимся поддерживать дружескую атмосферу.
+                        Вы будете чувствовать себя комфортно.
                     </Text>
                 </section>
                 <Discord />

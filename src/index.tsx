@@ -12,6 +12,16 @@ import { ARTICLES, TAGS } from "./fixtures";
 
 window.history.scrollRestoration = "manual";
 
+const enhanceWithTOC = (content: any[]) => {
+    const TOC: any[] = [];
+
+    content.forEach((element: any) => {
+        if (element.type === "header") TOC.push(element);
+    });
+
+    return { TOC, content };
+};
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -70,7 +80,7 @@ const router = createBrowserRouter([
             if (article === undefined) throw json(null, { status: 404 });
             return {
                 ...article,
-                content: [
+                ...enhanceWithTOC([
                     {
                         id: "node-1",
                         type: "paragraph",
@@ -91,7 +101,9 @@ const router = createBrowserRouter([
                     {
                         id: "node-3",
                         type: "header",
-                        properties: { id: "some-anchor" },
+                        properties: {
+                            id: "Основы-коммуникации-и-взаимодействия-в-составе-тактической-единицы",
+                        },
                         children: [
                             "Основы коммуникации и взаимодействия в составе тактической единицы",
                         ],
@@ -109,6 +121,7 @@ const router = createBrowserRouter([
                         type: "picture",
                         properties: {
                             src: "/article-cover.jpg",
+                            caption: "Война - это путь обмана.",
                         },
                         children: [],
                     },
@@ -123,7 +136,9 @@ const router = createBrowserRouter([
                     {
                         id: "node-7",
                         type: "header",
-                        properties: {},
+                        properties: {
+                            id: "some-anchor",
+                        },
                         children: [
                             "Основы коммуникации и взаимодействия в составе тактической единицы",
                         ],
@@ -144,7 +159,7 @@ const router = createBrowserRouter([
                             "Война - это путь обмана. Поэтому, если ты и можешь что-нибудь, показывай противнику, будто не можешь; если ты и пользуешься чем-нибудь, показывай ему, будто ты этим не пользуешься; хотя бы ты и был близко, показывай, будто ты далеко; хотя бы ты и был далеко, показывай, будто ты близко; заманивай его выгодой; приведи его в расстройство и бери его; если у него все полно, будь наготове; если он силен, уклоняйся от него; вызвав в нем гнев, приведи его в состояние расстройства; приняв смиренный вид, вызови в нем самомнение; если его силы свежи, утоми его; если у него дружны воины, разъедини; нападай на него, когда он не готов; выступай, когда он не ожидает.",
                         ],
                     },
-                ],
+                ]),
             };
         },
         errorElement: <Error />,

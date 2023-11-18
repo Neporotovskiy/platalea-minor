@@ -9,19 +9,16 @@ import { Content, Blocks } from "types/article";
 import styles from "./blocks.module.css";
 
 export const BLOCKS: Record<Blocks, FC<any>> = {
-    header: ({ children, ...props }) => (
+    header: ({ id, children, ...props }) => (
         <Text
             as="h2"
             size="medium"
             color="light"
-            {...props}
+            id={id}
             className={styles.header}
+            {...props}
         >
-            {props.id === undefined ? (
-                children
-            ) : (
-                <a href={"#" + props.id}>{children}</a>
-            )}
+            <a href={"#" + id}>{children}</a>
         </Text>
     ),
     paragraph: ({ children, ...props }) => (
@@ -40,7 +37,7 @@ export const BLOCKS: Record<Blocks, FC<any>> = {
             {children}
         </Text>
     ),
-    picture: ({ nodeID, children: _, alt, ...props }) => {
+    picture: ({ caption, children: _, ...props }) => {
         const ref = React.createRef<HTMLDialogElement>();
 
         const open = () => {
@@ -57,24 +54,31 @@ export const BLOCKS: Record<Blocks, FC<any>> = {
         };
 
         return (
-            <>
+            <figure className={styles.figure}>
                 <Image
-                    alt={alt}
                     width="710"
                     height="400"
                     onClick={open}
-                    className={styles.picture}
+                    className={styles.image}
                     {...props}
                 />
+                <Text
+                    as="figcaption"
+                    size="small"
+                    color="light"
+                    className={styles.caption}
+                >
+                    {caption}
+                </Text>
                 <dialog
                     ref={ref}
                     onClick={close}
                     onClose={restoreScroll}
                     className={styles.preview}
                 >
-                    <Image {...props} alt={alt} className={styles.picture} />
+                    <Image {...props} className={styles.image} />
                 </dialog>
-            </>
+            </figure>
         );
     },
 };
@@ -87,7 +91,7 @@ export const renderer = ({
 }: Content): ReactNode => {
     return React.createElement(
         BLOCKS[type],
-        { ...properties, key: id, "data-nodeid": id },
+        { ...properties, key: id },
         children.map((child) =>
             typeof child === "string" ? child : renderer(child),
         ),
