@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Navigation } from "features/navigation";
-import { Discord } from "features/discord";
 
 import { Image } from "components/image";
 import { Text } from "components/text";
@@ -122,7 +121,6 @@ export const About = () => {
                         Вы будете чувствовать себя комфортно.
                     </Text>
                 </section>
-                <Discord />
             </article>
         </>
     );

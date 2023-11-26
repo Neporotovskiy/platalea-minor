@@ -1,0 +1,4 @@
+.skeleton {
+    background-color: rgba(var(--color-semi-dark), .5);
+    border-radius: 5px;
+}
