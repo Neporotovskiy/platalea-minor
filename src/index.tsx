@@ -1,14 +1,20 @@
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, defer, RouterProvider } from "react-router-dom";
-import type { LoaderFunctionArgs } from "react-router-dom";
+import {
+    createBrowserRouter,
+    defer,
+    RouterProvider,
+    type LoaderFunctionArgs,
+} from "react-router-dom";
 
 import { RouteError } from "features/error";
 
-import { Homepage } from "pages/homepage";
-import { Articles } from "pages/articles";
-import { Article } from "pages/article";
+import { Homepage, type Data as HomepageData } from "pages/homepage";
+import { Articles, type Data as ArticlesData } from "pages/articles";
+import { Article, type Data as ArticleData } from "pages/article";
 import { About } from "pages/about";
+
+import { Page } from "features/page";
 
 import { _fetch } from "./fixtures";
 
@@ -17,7 +23,11 @@ window.history.scrollRestoration = "manual";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Homepage />,
+        element: (
+            <Page<HomepageData> skeleton={<Homepage.Skeleton />}>
+                <Homepage />
+            </Page>
+        ),
         loader: ({ request: { signal } }: LoaderFunctionArgs) =>
             defer({
                 promise: _fetch("/api/homepage", {
@@ -28,7 +38,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/articles",
-        element: <Articles />,
+        element: (
+            <Page<ArticlesData> skeleton={<Articles.Skeleton />}>
+                <Articles />
+            </Page>
+        ),
         loader: ({ request: { url, signal } }: LoaderFunctionArgs) => {
             const { search } = new URL(url);
             return defer({
@@ -41,7 +55,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/articles/:id",
-        element: <Article />,
+        element: (
+            <Page<ArticleData> skeleton={<Article.Skeleton />}>
+                <Article />
+            </Page>
+        ),
         loader: ({ request: { signal }, params: { id } }: LoaderFunctionArgs) =>
             defer({
                 promise: _fetch(`/api/article/${id}`, {

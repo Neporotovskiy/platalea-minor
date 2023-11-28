@@ -1,9 +1,7 @@
-import React, { Suspense } from "react";
-import { useLoaderData, Await, useSearchParams } from "react-router-dom";
+import React from "react";
+import { useSearchParams, useAsyncValue } from "react-router-dom";
 
-import { Navigation } from "features/navigation";
 import { Article } from "features/article";
-import { AsyncError } from "features/error";
 
 import { Search } from "components/search";
 import { MultiSelect, Select } from "components/select";
@@ -14,13 +12,13 @@ import type { Article as ArticleType, Tag as TagType } from "types/article";
 
 import styles from "./articles.module.css";
 
-type ArticlesData = {
+export type Data = {
     tags: TagType[];
     articles: ArticleType[];
 };
 
 export const Articles = () => {
-    const { promise } = useLoaderData() as LoaderData<ArticlesData>;
+    const { tags, articles } = useAsyncValue() as Data;
 
     const [params, setParams] = useSearchParams(window.location.search);
 
@@ -79,103 +77,86 @@ export const Articles = () => {
 
     return (
         <>
-            <Navigation />
-            <Suspense
-                fallback={
-                    <>
-                        <section className={styles.filters}>
-                            <div className={styles.filter}>
-                                <Skeleton width="350px" height="44px" />
-                            </div>
-                            <div className={styles.filter}>
-                                <Skeleton width="350px" height="44px" />
-                            </div>
-                            <div className={styles.filter}>
-                                <Skeleton width="350px" height="44px" />
-                            </div>
-                        </section>
-                        <section className={styles.articles}>
-                            <Skeleton width="350px" height="350px" />
-                            <Skeleton width="350px" height="350px" />
-                            <Skeleton width="350px" height="350px" />
-                            <Skeleton width="350px" height="350px" />
-                            <Skeleton width="350px" height="350px" />
-                            <Skeleton width="350px" height="350px" />
-                        </section>
-                    </>
-                }
-            >
-                <Await resolve={promise} errorElement={<AsyncError />}>
-                    {({ tags, articles }: ArticlesData) => (
-                        <>
-                            <section className={styles.filters}>
-                                <div className={styles.filter}>
-                                    <Search
-                                        type="text"
-                                        value={getStringParam("query")}
-                                        onChange={setStringParam("query")}
-                                        placeholder="Поиск по названию"
-                                    />
-                                </div>
-                                <div className={styles.filter}>
-                                    <MultiSelect
-                                        values={getArrayParam("tag")}
-                                        onChange={setArrayParam("tag")}
-                                        placeholder="Поиск по метке"
-                                    >
-                                        {tags.map(({ id, name }) => ({
-                                            value: id,
-                                            label: name,
-                                        }))}
-                                    </MultiSelect>
-                                </div>
-                                <div className={styles.filter}>
-                                    <Select
-                                        value={getStringParam("order")}
-                                        onChange={setStringParam("order")}
-                                        placeholder="Сортировка"
-                                    >
-                                        {[
-                                            {
-                                                value: "asc",
-                                                label: "Самые свежие",
-                                            },
-                                            {
-                                                value: "desc",
-                                                label: "Самые старые",
-                                            },
-                                        ]}
-                                    </Select>
-                                </div>
-                            </section>
-                            <section className={styles.articles}>
-                                {articles.length > 0 ? (
-                                    articles.map((article) => (
-                                        <Article
-                                            key={article.id}
-                                            size="medium"
-                                            {...article}
-                                        />
-                                    ))
-                                ) : (
-                                    <div className={styles.empty}>
-                                        <Text
-                                            as="h2"
-                                            size="medium"
-                                            color="light"
-                                        >
-                                            Ничего не найдено
-                                        </Text>
-                                        <Text as="p" size="small" color="light">
-                                            Измените параметры поиска
-                                        </Text>
-                                    </div>
-                                )}
-                            </section>
-                        </>
-                    )}
-                </Await>
-            </Suspense>
+            <section className={styles.filters}>
+                <div className={styles.filter}>
+                    <Search
+                        type="text"
+                        value={getStringParam("query")}
+                        onChange={setStringParam("query")}
+                        placeholder="Поиск по названию"
+                    />
+                </div>
+                <div className={styles.filter}>
+                    <MultiSelect
+                        values={getArrayParam("tag")}
+                        onChange={setArrayParam("tag")}
+                        placeholder="Поиск по метке"
+                    >
+                        {tags.map(({ id, name }) => ({
+                            value: id,
+                            label: name,
+                        }))}
+                    </MultiSelect>
+                </div>
+                <div className={styles.filter}>
+                    <Select
+                        value={getStringParam("order")}
+                        onChange={setStringParam("order")}
+                        placeholder="Сортировка"
+                    >
+                        {[
+                            {
+                                value: "asc",
+                                label: "Самые свежие",
+                            },
+                            {
+                                value: "desc",
+                                label: "Самые старые",
+                            },
+                        ]}
+                    </Select>
+                </div>
+            </section>
+            <section className={styles.articles}>
+                {articles.length > 0 ? (
+                    articles.map((article) => (
+                        <Article key={article.id} size="medium" {...article} />
+                    ))
+                ) : (
+                    <div className={styles.empty}>
+                        <Text as="h2" size="medium" color="light">
+                            Ничего не найдено
+                        </Text>
+                        <Text as="p" size="small" color="light">
+                            Измените параметры поиска
+                        </Text>
+                    </div>
+                )}
+            </section>
         </>
     );
 };
+
+Articles.Skeleton = () => (
+    <>
+        <section className={styles.filters}>
+            <div className={styles.filter}>
+                <Skeleton width="350px" height="44px" />
+            </div>
+            <div className={styles.filter}>
+                <Skeleton width="350px" height="44px" />
+            </div>
+            <div className={styles.filter}>
+                <Skeleton width="350px" height="44px" />
+            </div>
+        </section>
+        <section className={styles.articles}>
+            <Skeleton width="350px" height="350px" />
+            <Skeleton width="350px" height="350px" />
+            <Skeleton width="350px" height="350px" />
+            <Skeleton width="350px" height="350px" />
+            <Skeleton width="350px" height="350px" />
+            <Skeleton width="350px" height="350px" />
+        </section>
+    </>
+);
