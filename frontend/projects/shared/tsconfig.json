@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "module": "ESNext",
+        "target": "ESNext",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "outDir": "./build"
+    },
+    "include": ["./src"],
+    "exclude": ["./build", "./node_modules", "./src/**/*.stories.ts"]
+}

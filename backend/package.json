@@ -1,0 +1,6 @@
+{
+  "name": "backend",
+  "workspaces": [
+    "projects/*"
+  ]
+}

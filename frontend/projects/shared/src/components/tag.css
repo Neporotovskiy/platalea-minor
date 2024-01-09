@@ -1,0 +1,26 @@
+.tag {
+    display: inline-block;
+    padding: 0 7px;
+    border-radius: 3px;
+    font: var(--font-small);
+    color: rgb(var(--color-light));
+    text-decoration: none;
+
+    &_dark {
+        background-color: rgba(var(--color-dark), .5);
+    }
+
+    &_semi-dark {
+        background-color: rgba(var(--color-semi-dark), .5);
+    }
+
+    &_semi-light {
+        background-color: rgba(var(--color-semi-light), .5);
+        color: rgb(var(--color-dark));
+    }
+
+    &_light {
+        background-color: rgba(var(--color-light), .5);
+        color: rgb(var(--color-dark));
+    }
+}

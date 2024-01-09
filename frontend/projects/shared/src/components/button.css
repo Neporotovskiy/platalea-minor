@@ -1,0 +1,37 @@
+.button {
+    width: 100%;
+    border: none;
+    display: flex;
+    gap: 2px;
+    text-decoration: none;
+    cursor: pointer;
+
+    &__label {
+        padding: 10px 20px;
+        border-radius: 5px 0 0 5px;
+        flex-grow: 1;
+        font: var(--font-small);
+    }
+
+    &__icon {
+        width: 44px;
+        border-radius: 0 5px 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &_semi-dark &__label,
+    &_semi-dark &__icon {
+        background-color: rgb(var(--color-semi-dark));
+        color: rgb(var(--color-light));
+    }
+
+    &_light &__label,
+    &_light &__icon {
+        background-color: rgb(var(--color-light));
+        color: rgb(var(--color-dark));
+    }
+}
+
+

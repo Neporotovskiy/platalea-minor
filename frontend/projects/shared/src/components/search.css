@@ -1,0 +1,40 @@
+.search {
+    display: flex;
+    gap: 2px;
+    
+    .input {
+        padding: 10px 20px;
+        border: none;
+        flex-grow: 1;
+        font: var(--font-small);
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .input::placeholder {
+        color: inherit;
+    }
+
+    .icon {
+        width: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .input,
+    .icon {
+        background-color: rgb(var(--color-semi-dark));
+        color: rgb(var(--color-light));
+    }
+
+    .search:focus-within .input,
+    .search:focus-within .icon,
+    .search.fulfilled .input,
+    .search.fulfilled .icon {
+        background-color: rgb(var(--color-light));
+        color: rgb(var(--color-dark));
+    }
+}

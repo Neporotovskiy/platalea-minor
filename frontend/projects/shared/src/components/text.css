@@ -1,0 +1,36 @@
+.text {
+    all: unset;
+    text-align: left;
+    
+    &_small {
+        font: var(--font-small);
+    }
+
+    &_medium {
+        font: var(--font-medium);
+    }
+
+    &_large {
+        font: var(--font-large);
+    }
+
+    &_dark {
+        color: rgb(var(--color-dark));
+    }
+
+    &_semi-dark {
+        color: rgb(var(--color-semi-dark));
+    }
+
+    &_semi-light {
+        color: rgb(var(--color-semi-light));
+    }
+
+    &_light {
+        color: rgb(var(--color-light));
+    }
+
+    &:empty {
+        display: none;
+    }
+}

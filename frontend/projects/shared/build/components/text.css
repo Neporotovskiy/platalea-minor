@@ -1,0 +1,1 @@
+.text{all:unset;text-align:left}.text_small{font:var(--font-small)}.text_medium{font:var(--font-medium)}.text_large{font:var(--font-large)}.text_dark{color:rgb(var(--color-dark))}.text_semi-dark{color:rgb(var(--color-semi-dark))}.text_semi-light{color:rgb(var(--color-semi-light))}.text_light{color:rgb(var(--color-light))}.text:empty{display:none}

@@ -1,0 +1,74 @@
+html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    background-color: rgb(var(--color-dark));
+    scroll-padding-top: 20px;
+}
+
+body {
+    max-width: 1090px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    font: var(--font-small);
+}
+
+body.no-scroll {
+    overflow: hidden;
+}
+
+.scrollable::-webkit-scrollbar,
+.scrollable::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-semi-dark));
+    border: 5px solid rgb(var(--color-dark));
+    border-radius: 10px;
+}
+
+#header,
+#app,
+#footer {
+    display: flex;
+}
+
+#header,
+#footer {
+    padding: 20px 10px;
+    color: rgb(var(--color-light));
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header .logotype {
+    width: 50px;
+    height: 50px;
+    display: flex;
+}
+
+#header .logotype svg {
+    margin: auto;
+}
+
+#header #nav {
+    display: flex;
+    gap: 20px;
+}
+
+#app {
+    padding: 10px;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#footer {
+    justify-content: space-between;
+}
