@@ -1,6 +1,7 @@
 html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    background-color: rgb(var(--color-dark));
     scroll-padding-top: 20px;
 }
 
@@ -10,10 +11,22 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    font: var(--font-small);
 }
 
 body.no-scroll {
     overflow: hidden;
+}
+
+.scrollable::-webkit-scrollbar,
+.scrollable::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--color-semi-dark));
+    border: 5px solid rgb(var(--color-dark));
+    border-radius: 10px;
 }
 
 #header,
@@ -25,6 +38,7 @@ body.no-scroll {
 #header,
 #footer {
     padding: 20px 10px;
+    color: rgb(var(--color-light));
 }
 
 #header {

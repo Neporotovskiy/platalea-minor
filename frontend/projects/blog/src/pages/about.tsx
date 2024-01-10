@@ -24,7 +24,7 @@ export const About = () => (
             <Image
                 width={1070}
                 height={602}
-                src="/about-us.jpg"
+                src="/files/about-cover.jpg"
                 alt="Коллективная фотография личного состава коллектива"
                 className={styles.cover}
             />
