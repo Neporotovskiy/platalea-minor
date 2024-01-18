@@ -1,13 +1,13 @@
 import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import { Homepage } from "pages/homepage";
 import { Articles } from "pages/articles";
 import { Article } from "pages/article";
 import { About } from "pages/about";
 
-import { Page } from "features/page";
+import { Navigation } from "features/navigation";
 
 import { Error } from "shared/build/components/error";
 
@@ -22,54 +22,53 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: (
-            <Page name="Главная">
-                <Homepage />
-            </Page>
+            <>
+                <Navigation />
+                <Outlet />
+            </>
         ),
-        errorElement: (
-            <Page name="Страница недоступна">
-                <Error message="ROUTE_ERR" description="Страница недоступна" />
-            </Page>
-        ),
-    },
-    {
-        path: "/articles",
-        element: (
-            <Page name="Все статьи">
-                <Articles />
-            </Page>
-        ),
-        errorElement: (
-            <Page name="Страница недоступна">
-                <Error message="ROUTE_ERR" description="Страница недоступна" />
-            </Page>
-        ),
-    },
-    {
-        path: "/articles/:id",
-        element: (
-            <Page name="Загрузка...">
-                <Article />
-            </Page>
-        ),
-        errorElement: (
-            <Page name="Страница недоступна">
-                <Error message="ROUTE_ERR" description="Страница недоступна" />
-            </Page>
-        ),
-    },
-    {
-        path: "/about",
-        element: (
-            <Page name="О проекте">
-                <About />
-            </Page>
-        ),
-        errorElement: (
-            <Page name="Страница недоступна">
-                <Error message="ROUTE_ERR" description="Страница недоступна" />
-            </Page>
-        ),
+        children: [
+            {
+                index: true,
+                element: <Homepage />,
+                errorElement: (
+                    <Error
+                        message="ROUTE_ERR"
+                        description="Страница недоступна"
+                    />
+                ),
+            },
+            {
+                path: "/articles",
+                element: <Articles />,
+                errorElement: (
+                    <Error
+                        message="ROUTE_ERR"
+                        description="Страница недоступна"
+                    />
+                ),
+            },
+            {
+                path: "/articles/:id",
+                element: <Article />,
+                errorElement: (
+                    <Error
+                        message="ROUTE_ERR"
+                        description="Страница недоступна"
+                    />
+                ),
+            },
+            {
+                path: "/about",
+                element: <About />,
+                errorElement: (
+                    <Error
+                        message="ROUTE_ERR"
+                        description="Страница недоступна"
+                    />
+                ),
+            },
+        ],
     },
 ]);
 

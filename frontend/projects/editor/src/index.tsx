@@ -1,13 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-import 'shared/styles/fonts.css'
-import 'shared/styles/variables.css'
+import { Error } from "shared/build/components/error";
 
-import { Text } from 'shared/build/components/text'
+import { Navigation } from "features/navigation";
 
-const App = () => <Text color='light' size='medium'>Hello there!</Text>
+import { Editor } from "pages/editor";
 
-const root = window["root"];
+import "shared/styles/variables.css";
+import "shared/styles/fonts.css";
 
-ReactDOM.createRoot(root).render(<App/>);
+import "./index.css";
+
+window.history.scrollRestoration = "manual";
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: (
+            <>
+                <Navigation />
+                <Outlet />
+            </>
+        ),
+        children: [
+            {
+                path: "article",
+                element: <Editor />,
+                errorElement: (
+                    <Error
+                        message="ROUTE_ERR"
+                        description="Страница недоступна"
+                    />
+                ),
+            },
+        ],
+    },
+]);
+
+const root = ReactDOM.createRoot(window.app);
+
+root.render(
+    <StrictMode>
+        <RouterProvider router={router} />
+    </StrictMode>,
+);

@@ -30,21 +30,17 @@ body.no-scroll {
 }
 
 #header,
-#app,
-#footer {
+#app {
     display: flex;
-}
 
-#header,
-#footer {
-    padding: 20px 10px;
-    color: rgb(var(--color-light));
 }
 
 #header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px 10px;
+    color: rgb(var(--color-light));
 }
 
 #header .logotype {
@@ -67,8 +63,4 @@ body.no-scroll {
     flex-grow: 1;
     flex-direction: column;
     gap: 20px;
-}
-
-#footer {
-    justify-content: space-between;
 }

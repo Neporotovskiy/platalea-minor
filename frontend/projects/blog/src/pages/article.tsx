@@ -3,6 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 
 import { renderer } from "features/blocks";
 
+import { useDocumentTitle } from "shared/build/hooks/use-document-title";
 import { Image } from "shared/build/components/image";
 import { Text } from "shared/build/components/text";
 import { Tag } from "shared/build/components/tag";
@@ -19,6 +20,8 @@ type Data = ArticleType & {
 };
 
 export const Article = () => {
+    useDocumentTitle("Загрузка...");
+
     const { id } = useParams();
 
     const [[response, loading, error], setState] = React.useState<

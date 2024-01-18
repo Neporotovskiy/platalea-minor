@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { Article } from "features/article";
 
+import { useDocumentTitle } from "shared/build/hooks/use-document-title";
 import { Search } from "shared/build/components/search";
 import { MultiSelect, Select } from "shared/build/components/select";
 import { Skeleton } from "shared/build/components/skeleton";
@@ -135,6 +136,8 @@ const Filters = () => {
 };
 
 export const Articles = () => {
+    useDocumentTitle("Все статьи");
+
     const [search] = useSearchParams(window.location.search);
 
     const [[response, loading, error], setState] = React.useState<

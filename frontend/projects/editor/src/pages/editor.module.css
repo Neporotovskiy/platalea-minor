@@ -1,0 +1,47 @@
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.header .tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header .tags,
+.header .title,
+.header .description {
+    max-width: 710px;
+}
+
+.header .title,
+.header .description {
+    text-align: center;
+}
+
+.header .cover {
+    width: 1070px;
+    height: 602px;
+    margin: 20px 0;
+    border-radius: 5px;
+    background-color: rgb(var(--color-semi-dark));
+}
+
+.content {
+    width: 710px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 auto;
+}

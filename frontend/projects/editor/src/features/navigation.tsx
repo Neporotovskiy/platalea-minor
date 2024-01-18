@@ -14,16 +14,8 @@ export const Navigation = () => {
         <>
             {[
                 {
-                    name: "Главная",
-                    url: "/",
-                },
-                {
-                    name: "Все статьи",
-                    url: "/articles",
-                },
-                {
-                    name: "О проекте",
-                    url: "/about",
+                    name: "Создать статью",
+                    url: "/article",
                 },
             ].map(({ url, name }) => (
                 <Text

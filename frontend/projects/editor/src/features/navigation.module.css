@@ -1,0 +1,9 @@
+.link {
+    cursor: pointer;
+    opacity: .5;
+}
+
+.link.selected {
+    cursor: default;
+    opacity: 1;
+}

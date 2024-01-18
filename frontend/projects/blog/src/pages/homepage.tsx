@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import { Article } from "features/article";
 
+import { useDocumentTitle } from "shared/build/hooks/use-document-title";
 import { Error } from "shared/build/components/error";
 import { Text } from "shared/build/components/text";
 import { Skeleton } from "shared/build/components/skeleton";
@@ -27,6 +28,8 @@ type Data = {
 };
 
 export const Homepage = () => {
+    useDocumentTitle("Главная");
+
     const [[response, loading, error], setState] = React.useState<
         [Data | null, boolean, boolean]
     >([null, true, false]);
